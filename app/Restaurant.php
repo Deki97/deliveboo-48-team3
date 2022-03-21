@@ -26,12 +26,12 @@ class Restaurant extends Model
     }
 
     protected function getUniqueSlugFromName($restaurant_name) {
-        //creo lo slug dal $title
+        //creo lo slug dal $restaurant_name
         $slug = Str::slug($restaurant_name);
         //creo un'altra variabile per evitare che i numeri si concatenino (slug-1-2-3)
         $slug_base = $slug;
 
-        // Controlliamo se esiste già un post con questo slug.
+        // Controlliamo se esiste già un restaurant con questo slug.
         $restaurant_found = Restaurant::where('slug', '=', $slug)->first();
         $counter = 1;
         while($restaurant_found) {
