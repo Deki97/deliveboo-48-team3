@@ -95,7 +95,10 @@ class RestaurantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $restaurant = Restaurant::findOrFail($id);
+        $categories = Category::all();
+
+        return view('admin.restaurants.edit', compact('restaurant', 'categories'));
     }
 
     /**
@@ -107,7 +110,42 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $form_data = $request->all();
+        $request->validate($this->validationRules());
+
+        $restaurant = Restaurant::findOrFail($id);
+
+        // Aggiorno lo slug soltanto se l'utente in fase di modifica cambia il titolo
+        if($form_data['restaurant_name'] != $restaurant->restaurant_name) {
+            $form_data['slug'] = Restaurant::getUniqueSlugFromName($form_data['restaurant_name']);
+        }
+
+        if($form_data['image']) {
+            // Cancello il file vecchio
+            if($restaurant->path_img) {
+                Storage::delete($restaurant->path_img);
+            }
+
+            // Faccio l'upload il nuovo file
+            $path_img = Storage::put('restaurant_images', $form_data['image']);
+
+            // Salvo nella colonna cover il path al nuovo file
+            $form_data['path_img'] = $path_img;
+        }
+        
+        $restaurant->update($form_data);
+
+        if(isset($form_data['categories'])) {
+            $restaurant->category()->sync($form_data['categories']);
+        } else {
+            // Se non esiste la chiave tags in form_data
+            // significa che l'utente a rimosso il check da tutti i tag
+            // quindi se questo post aveva dei tag collegati li rimuovo
+            $restaurant->category()->sync([]);
+        }
+        
+
+        return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->id]);
     }
 
     /**
@@ -118,7 +156,14 @@ class RestaurantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $restaurant = Restaurant::findOrFail($id);
+        $restaurant->category()->sync([]);
+        if($restaurant->path_img) {
+            Storage::delete($restaurant->path_img);
+        }
+        $restaurant->delete();
+
+        return redirect()->route('admin.restaurants.index');
     }
 
     public function validationRules() {
