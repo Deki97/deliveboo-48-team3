@@ -25,5 +25,17 @@
             <h3>Telefono: {{$restaurant->phone}}</h3>
             <h4>P.Iva: {{$restaurant->vat}}</h4>
         </div>
+        <div>
+            <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->id]) }}">Modifica ristorante</a>
+        </div>
+
+        <div>
+            <form action="{{ route('admin.restaurants.destroy', ['restaurant' => $restaurant->id]) }}" method="post">
+                @csrf
+                @method('DELETE')
+
+                <button onclick="return confirm('sei sicuro di voler cancellare?')" class="btn btn-danger">Cancella</button>
+            </form>
+        </div>
     </div>
 @endsection
