@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Dish;
 use App\Category;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -39,10 +39,10 @@ class RestaurantController extends Controller
        
         $id = Auth::user()->id;
         $restaurants = Restaurant::where('user_id',$id)->get();
-        
+        $categories = Category::all();
 
         if($restaurants->isEmpty()){
-            return view ('admin.restaurants.create');
+            return view ('admin.restaurants.create', compact('categories'));
         }else{
             return redirect()->route('admin.restaurants.index');
         }
@@ -55,7 +55,23 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validationRules());
+        $form_data = $request->all();
+        $new_restaurant = new Restaurant();
+        $new_restaurant->fill($form_data);
+        $new_restaurant->user_id = Auth::id();
+        $new_restaurant->slug = Restaurant::getUniqueSlugFromName($form_data['restaurant_name']);
+        if(isset($form_data['image'])) {
+            $path_img = Storage::put('restaurant_images', $form_data['image']);
+            $new_restaurant->path_img = $path_img;
+        }
+        $new_restaurant->save();
+
+        if(isset($form_data['categories'])) {
+            $new_restaurant->category()->sync($form_data['categories']);
+        }
+
+        return redirect()->route('admin.restaurants.index', ['restaurant' => $new_restaurant->id]);
     }
 
     /**
@@ -105,5 +121,14 @@ class RestaurantController extends Controller
         //
     }
 
+    public function validationRules() {
+        return [
+            'restaurant_name' => 'required|max:100',
+            'address' => 'required|max:255',
+            'vat' => 'required|max:11',
+            'phone' => 'required|max:11',
+            'image' => 'required|image|max:512'
+        ];
+    }
     
 }
