@@ -11,7 +11,11 @@
                         @foreach ($restaurants as $restaurant)
                         {{-- single restaurant-card --}}
                             <div class="card text-center " style="width: 22rem;">
-                                <img src="{{$restaurant->path_img}}" class="card-img-top" alt="{{$restaurant->restaurant_name}}">
+                                @if (str_contains($restaurant->path_img,'http'))
+                                    <img src="{{$restaurant->path_img}}" class="card-img-top" alt="{{$restaurant->restaurant_name}}">
+                                @else
+                                    <img src="{{asset('storage/' . $restaurant->path_img)}}" class="card-img-top" alt="{{$restaurant->restaurant_name}}">
+                                @endif
                                 <div class="card-body ">
                                     <h5 class=" card-title"><strong>Nome:</strong>{{$restaurant->restaurant_name}}</h5>
                                     <p class="card-text"><strong>Indirizzo:</strong>{{$restaurant->address}}</p>

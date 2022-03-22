@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Dish;
 use App\Category;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -55,7 +56,19 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        $new_restaurant = new Restaurant();
+
+        $new_restaurant->fill($form_data);
+        $new_restaurant->user_id = Auth::id();
+        $new_restaurant->slug = Restaurant::getUniqueSlugFromName($form_data['restaurant_name']);
+        if(isset($form_data['image'])) {
+            $path_img = Storage::put('restaurant_images', $form_data['image']);
+            $new_restaurant->path_img = $path_img;
+        }
+        $new_restaurant->save();
+
+        return redirect()->route('admin.restaurants.index', ['restaurant' => $new_restaurant->id]);
     }
 
     /**
