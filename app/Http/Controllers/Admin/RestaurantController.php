@@ -83,8 +83,9 @@ class RestaurantController extends Controller
     public function show($id)
     {
         $restaurant = Restaurant::FindOrFail($id);
+        $dishes = Dish::where('restaurant_id',$id)->get();
 
-        return view('admin.restaurants.show',compact('restaurant'));
+        return view('admin.restaurants.show',compact('restaurant','dishes'));
     }
 
     /**
