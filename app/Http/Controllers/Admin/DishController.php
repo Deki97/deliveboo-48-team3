@@ -33,7 +33,7 @@ class DishController extends Controller
     {
         $id = Auth::user()->id;
         $restaurant = Restaurant::where('user_id',$id)->get();
-
+        // dd($restaurant[$restaurant->id]);
             return view('admin.dishes.create');
         
             // return redirect()->route('admin.restaurants.show')->with('unauthorized', "Non sei autorizzato ad aggiungere piatti per questo ristorante.");
@@ -69,7 +69,7 @@ class DishController extends Controller
         $new_dish->save();
         
 
-        return redirect()->route('admin.restaurants.show',['new_dish' => $new_dish->restaurant_id]);
+        return redirect()->route('admin.restaurants.show', ['restaurant' => $userRestaurant->id]);
     }
 
     /**
