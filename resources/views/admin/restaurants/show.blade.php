@@ -41,13 +41,20 @@
     {{-- DISHES --}}
     <div class="dishes_cards">
         <div class="container">
+            <div>
+                <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">Aggiungi</a>
+            </div>
             <div class="row">
-                <button class="btn btn-primary">Aggiungi</button> 
                 @foreach ($dishes as $dish)
                     <div class="col">
                                {{-- single dish --}}
                     <div class="card mx-3 my-5" style="width: 18rem;">
-                        <img src="{{$dish->path_img}}" class="card-img-top" alt="{{$dish->name}}">
+                        @if (str_contains($restaurant->path_img,'http'))
+                            <img src="{{$dish->path_img}}" class="card-img-top" alt="{{$dish->name}}">
+                        @else
+                            <img src="{{asset('storage/' . $dish->path_img)}}" class="card-img-top" alt="{{$dish->name}}">
+                        @endif
+                        
                         <div class="card-body">
                           <h5 class="card-title">Nome: {{$dish->name}}</h5>
                           <p class="card-text">{{$dish->slug}}</p>
