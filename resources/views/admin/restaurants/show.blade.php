@@ -38,4 +38,33 @@
             </form>
         </div>
     </div>
+    {{-- DISHES --}}
+    <div class="dishes_cards">
+        <div class="container">
+            <div class="row">
+                <button class="btn btn-primary">Aggiungi</button> 
+                @foreach ($dishes as $dish)
+                    <div class="col">
+                               {{-- single dish --}}
+                    <div class="card mx-3 my-5" style="width: 18rem;">
+                        <img src="{{$dish->path_img}}" class="card-img-top" alt="{{$dish->name}}">
+                        <div class="card-body">
+                          <h5 class="card-title">Nome: {{$dish->name}}</h5>
+                          <p class="card-text">{{$dish->slug}}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Descrizione: {{$dish->description}}</li>
+                          <li class="list-group-item">Prezzo €{{$dish->price}}</li>
+                        </ul>
+                        <div class="card-body">
+                          <a href="#" class="card-link btn btn-primary">Modifica</a>
+                          <a href="#" class="card-link btn btn-danger">Cancella</a>
+                        </div>
+                      </div>
+                    </div>
+                @endforeach
+                    {{-- end single dish --}}  
+            </div>
+        </div>
+    </div>
 @endsection
