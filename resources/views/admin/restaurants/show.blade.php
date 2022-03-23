@@ -46,7 +46,7 @@
             </div>
             <div class="row">
                 @foreach ($dishes as $dish)
-                    <div class="col">
+            <div class="col">
                                {{-- single dish --}}
                     <div class="card mx-3 my-5" style="width: 18rem;">
                         @if (str_contains($restaurant->path_img,'http'))
@@ -63,13 +63,23 @@
                           <li class="list-group-item">Descrizione: {{$dish->description}}</li>
                           <li class="list-group-item">Prezzo €{{$dish->price}}</li>
                         </ul>
-                        <div class="card-body">
-                          <a href="#" class="card-link btn btn-primary">Modifica</a>
-                          <a href="#" class="card-link btn btn-danger">Cancella</a>
+                        <div class="card-body d-inline">
+                          <a href="{{ route('admin.dishes.edit', ['dish' => $dish->id]) }}" class="card-link btn btn-primary">Modifica</a>
+                          
+                        
+                            <form class="d-inline" action="{{ route('admin.dishes.destroy', ['dish' => $dish->id]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                
+                                <button onclick="return confirm('sei sicuro di voler cancellare?')" class="btn btn-danger">Cancella</button>
+                            </form>
                         </div>
-                      </div>
+                      
                     </div>
+                </div>
+
                 @endforeach
+
                     {{-- end single dish --}}  
             </div>
         </div>
