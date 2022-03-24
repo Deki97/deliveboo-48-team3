@@ -11169,7 +11169,7 @@ img {
 }
 
 a {
-  color: white;
+  color: inherit;
 }
 
 a:hover {
