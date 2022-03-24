@@ -30,8 +30,6 @@
        <h3>Info Ordine:</h3>
        @foreach ($order->dishorder as $singleorder)
        <ul class="my-3">
-           
-               
            <li>
                Nome Piatto: {{$singleorder->dish->name}}
            </li>
@@ -42,10 +40,6 @@
             <li>
                 Prezzo: {{$singleorder->dish->price}}
             </li>
-
-
-
-           
        </ul>
        @endforeach
        <div>
@@ -53,6 +47,9 @@
        </div>
        <div>
             Prezzo totale: {{$order->tot_price}}
+       </div>
+       <div class="my-5">
+           <a href="{{route('admin.order')}}">Torna agli ordini</a>
        </div>
 
    </section>
