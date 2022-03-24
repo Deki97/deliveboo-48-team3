@@ -1,49 +1,55 @@
 <template>
-    <header class="d-flex align-items-center">
-            <nav class="navbar navbar-expand-lg align-items-center justify-content-between">
-                <div class="menus d-flex justify-content-between">
-                    <div class="header-logo">
-                        <a class="navbar-brand mx-3" href="#">Deliveboo</a>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                        <li class="nav-item active mx-3">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link" href="#">Chi siamo</a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link" href="#">Lavora con noi</a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link" href="#">Contattaci</a>
-                        </li>
-                        </ul>
-                    </div>
-
-                    <div class="buttons">
-                        <button type="button" class="btn btn-warning">Accedi</button>
-                        <button type="button" class="btn btn-warning">Registrati</button>
-                    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg align-items-center">
+            <div class="menus d-flex align-items-center">
+                <!-- Logo -->
+                <div class="header-logo">
+                    <img src="../../assets/img/fork-logo.png" alt="">
                 </div>
 
-                <Slide class="d-block d-lg-none burger-menu" right
+                <!-- Desktop Menu -->
+                <div class="collapse navbar-collapse align-items-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item active mx-3">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#">Chi siamo</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#">Lavora con noi</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#">Contattaci</a>
+                    </li>
+                    </ul>
+                </div>
+
+                <!-- Buttons Register/Login -->
+                <div class="buttons d-none d-lg-block">
+                    <button type="button" class="btn btn-warning">Accedi<span class="button-icon"><i class="fa-solid fa-right-to-bracket"></i></span></button>
+                    <button type="button" class="btn btn-warning">Registrati<span class="button-icon"><i class="fa-solid fa-house"></i></span></button>
+                </div>
+
+                <!-- Burger Menu -->
+                <div class="burger">
+                    <Slide class="d-block d-lg-none burger-menu align-self-center" right
                     :isOpen="this.open"
                     :closeOnNavigation="true"
                     noOverlay
                     width="250"
-                >
-                <!-- Home Burger Link -->
-                <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-home"></i></span>Home</router-link>
-                <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-user-friends"></i></span>Chi siamo</router-link>
-                <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-briefcase"></i></span>Lavora con noi</router-link>
-                <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fa-solid fa-phone"></i></span>Contattaci</router-link>
-                </Slide>
-                
-            </nav>
+                    >
+                    <!-- Burger Links -->
+                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-home"></i></span>Home</router-link>
+                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-user-friends"></i></span>Chi siamo</router-link>
+                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-briefcase"></i></span>Lavora con noi</router-link>
+                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fa-solid fa-phone"></i></span>Contattaci</router-link>
+                    </Slide>
+                </div>
+            </div>
+
             
+        </nav>
     </header>
 </template>
 
@@ -74,13 +80,14 @@ export default {
 header {
     background-color: $page_primary_color;
     color: black;
-    padding: 20px 0;
+    padding: 20px;
     font-size: 20px;
     text-transform: uppercase;
     width: 100%;
     
     nav {
         width: 100%;
+
         .bm-burger-button {
         position: fixed;
         width: 40px;
@@ -89,66 +96,82 @@ header {
         top: 36px;
         cursor: pointer;
         color: white;
-        
-        }
-        .navbar-collapse {
-            flex-grow: 1;
         }
 
-        .navbar-nav {
-            .nav-item {
-                .nav-link {
-                    color: $page_secondary_color;
-                    transition: 0.3s;
+        .menus {
+            width: 100%;
 
-                    &:hover {
-                        color: white;
-                        transition: 0.3s;
+            .header-logo img {
+                width: 60px;
+            }
+            .navbar-collapse {
+                .navbar-nav {
+                    flex-grow: 1;
+                    justify-content: center;
+                    .nav-item {
+                        .nav-link {
+                            color: $page_secondary_color;
+                            transition: 0.3s;
+
+                            &:hover {
+                                color: white;
+                                transition: 0.3s;
+                            }
+                        }
                     }
                 }
             }
-        }
-
-        .bm-burger-bars {
+            .bm-burger-bars {
             background-color: $page_secondary_color;
-        }
-
-        .bm-menu {
-            background-color: $page_tertiary_color;
-            border: 5px $page_secondary_color;
-        }
-
-        .burger-link {
-            color: $page_secondary_color;
-            transition: 0.3s;
-            text-transform: capitalize;
-
-            &:hover {
-                text-decoration: none;
-                transform: translateX(5px);
-                transition: 0.3s;
-                color: white;
             }
-        }
 
-        .bm-item-list {
-            margin-left: 1px;
-        }
+            .bm-menu {
+                background-color: $page_tertiary_color;
+                border: 5px $page_secondary_color;
+            }
 
-        .cross-style {
-            position: absolute;
-            top: 24px;
-            left: 30px;
-            cursor: pointer;
-        }
+            .burger-link {
+                color: $page_secondary_color;
+                transition: 0.3s;
+                text-transform: capitalize;
 
-        .bm-cross {
-            background-color: $page_secondary_color;
-            font-size: 40px;
-        }
+                &:hover {
+                    text-decoration: none;
+                    transform: translateX(5px);
+                    transition: 0.3s;
+                    color: white;
+                }
+            }
 
-        .link-icon {
-            margin-right: 20px;
+            .bm-item-list {
+                margin-left: 1px;
+            }
+
+            .cross-style {
+                position: absolute;
+                top: 24px;
+                left: 30px;
+                cursor: pointer;
+            }
+
+            .bm-cross {
+                background-color: $page_secondary_color;
+            }
+
+            .link-icon {
+                margin-right: 20px;
+            }
+
+            .buttons {
+                button {
+                    margin: 0 5px;
+                    padding: 5px 20px;
+
+                    .button-icon {
+                        margin-left: 5px;
+                    }
+                }
+            }
         }
     }
 }
