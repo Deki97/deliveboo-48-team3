@@ -26,43 +26,26 @@ class OrderController extends Controller
         $dishArray = collect([]);
         foreach ($dishes as $dish) {
             $dishArray->push(['id' =>$dish->id]);
-
-            
         };
-         
-       /*  for ($i=0; $i <$dishArray.length ; $i++) { 
-            if($di)
-        } */
-
-        /* foreach ($dishArray as $singleDish) {
-            $dishorders = DishOrder::where('dish_id', $dishArray )->get();
-
-        } */
-    
-        $orders = Order::All();
         
-       
-
-        
-        return view('admin.orders.index', compact('orders'));
-
-
-
-
-
+        $dishOrders = DishOrder::All();
+        $orders = Order::all();
+        $dishOrderArray = collect([]);
+        foreach($dishArray as $singleDish) {
+            foreach ($dishOrders as $dishOrder) {
+                if($singleDish['id'] == $dishOrder->dish_id) {
+                    $dishOrderArray->push([Order::where('id', $dishOrder->order_id)->get()]);
+                }
+            } 
+        }
+        return view('admin.orders.index', compact('dishOrderArray'));
     }
 
     public function show($id){
 
         $order = Order::findOrFail($id);
         $order->status = Order::checkStatus($order->status);
-     
-
         return view('admin.orders.show',compact('order'));
-
-
-
-        
     }
     
 }
