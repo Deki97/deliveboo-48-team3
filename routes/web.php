@@ -25,7 +25,7 @@ Route::middleware('auth')
         Route::resource('restaurants','RestaurantController');
         Route::resource('dishes','DishController');
         Route::get('/orders', 'OrderController@index')->name('order');
-        Route::get('/orders/details', 'OrderController@show')->name('details');
+        Route::get('/orders/details/{id}' , 'OrderController@show')->name('details');
 
     });
 
