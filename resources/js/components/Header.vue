@@ -32,7 +32,7 @@
                 </div>
 
                 <!-- Burger Menu -->
-                <div class="burger">
+                <div class="burger d-flex flex-column">
                     <Slide class="d-block d-lg-none burger-menu align-self-center" right
                     :isOpen="this.open"
                     :closeOnNavigation="true"
@@ -42,8 +42,19 @@
                     <!-- Burger Links -->
                     <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-home"></i></span>Home</router-link>
                     <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-user-friends"></i></span>Chi siamo</router-link>
-                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-briefcase"></i></span>Lavora con noi</router-link>
+                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-briefcase"></i></span>Lavora</router-link>
                     <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fa-solid fa-phone"></i></span>Contattaci</router-link>
+
+                    <div class="burger-buttons d-flex flex-column">
+                        <!-- Burger Menu Buttons -->
+                        <div class="single-burger-button">
+                            <button type="button" class="btn btn-warning">Accedi<span class="button-icon"><i class="fa-solid fa-right-to-bracket"></i></span></button>
+                        </div>
+
+                        <div class="single-burger-button">
+                            <button type="button" class="btn btn-warning">Registrati<span class="button-icon"><i class="fa-solid fa-house"></i></span></button>
+                        </div>
+                    </div>
                     </Slide>
                 </div>
             </div>
@@ -140,6 +151,19 @@ header {
                     transform: translateX(5px);
                     transition: 0.3s;
                     color: white;
+                }
+            }
+
+            .burger-buttons {
+                flex-grow: 1;
+                justify-content: center;
+
+                .single-burger-button {
+                    margin: 5px 0;
+
+                    .button-icon {
+                        margin-left: 5px;
+                    }
                 }
             }
 
