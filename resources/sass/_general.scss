@@ -1,5 +1,29 @@
-@import './variables';
+
+// Import Fontsource Font
+@import "~@fontsource/titillium-web/200-italic.css";
+@import "~@fontsource/titillium-web/200.css";
+@import "~@fontsource/titillium-web/300-italic.css";
+@import "~@fontsource/titillium-web/300.css";
+@import "~@fontsource/titillium-web/400-italic.css";
+@import "~@fontsource/titillium-web/400.css";
+@import "~@fontsource/titillium-web/600-italic.css";
+@import "~@fontsource/titillium-web/600.css";
+@import "~@fontsource/titillium-web/700-italic.css";
+@import "~@fontsource/titillium-web/700.css";
+@import "~@fontsource/titillium-web/900.css";
+
+body {
+    font-family: "Titillium Web", sans-serif;
+}
 
 img{
     max-width:100%;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
 }
