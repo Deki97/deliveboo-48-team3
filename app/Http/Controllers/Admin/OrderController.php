@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
 use App\Restaurant;
+use App\Dish;
+use App\DishOrder;
 use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
@@ -16,14 +18,32 @@ class OrderController extends Controller
         
         $userId = Auth::id();
         $restaurants = Restaurant::where('user_id', $userId)->get();
+
+        $restaurantId = $restaurants[0]->id;
         
+        $dishes = Dish::where('restaurant_id', $restaurantId)->get();
+
+        $dishArray = collect([]);
+        foreach ($dishes as $dish) {
+            $dishArray->push(['id' =>$dish->id]);
+
+            
+        };
+         
+       /*  for ($i=0; $i <$dishArray.length ; $i++) { 
+            if($di)
+        } */
+
+        /* foreach ($dishArray as $singleDish) {
+            $dishorders = DishOrder::where('dish_id', $dishArray )->get();
+
+        } */
+    
         $orders = Order::All();
+        
+       
 
-        foreach ($restaurants as $restaurant) {
-            $orders[$restaurant->restaurant_name] = $restaurant->orders;
-        }
-
-
+        
         return view('admin.orders.index', compact('orders'));
 
 
@@ -32,10 +52,17 @@ class OrderController extends Controller
 
     }
 
-    public function show(){
+    public function show($id){
+
+        $order = Order::findOrFail($id);
+        $order->status = Order::checkStatus($order->status);
+     
+
+        return view('admin.orders.show',compact('order'));
 
 
 
-
+        
     }
+    
 }

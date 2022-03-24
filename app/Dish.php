@@ -21,6 +21,11 @@ class Dish extends Model
     }
     public function order() {
         return $this->belongsToMany('App\Order');
+
+    }
+
+    public function DishOrder(){
+        return $this->hasMany('App\Dish');
     }
 
     protected function getUniqueSlugFromName($name) {
