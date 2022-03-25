@@ -49,7 +49,8 @@
             <div class="col">
                                {{-- single dish --}}
                     <div class="card mx-3 my-5" style="width: 18rem;">
-                        @if (str_contains($restaurant->path_img,'http'))
+                        @if (str_contains($dish->path_img,'http'))
+                        
                             <img src="{{$dish->path_img}}" class="card-img-top" alt="{{$dish->name}}">
                         @else
                             <img src="{{asset('storage/' . $dish->path_img)}}" class="card-img-top" alt="{{$dish->name}}">

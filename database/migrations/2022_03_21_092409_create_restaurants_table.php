@@ -19,7 +19,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('address',255);
             $table->string('vat',11);
             $table->string('phone',10);
-            $table->text('path_img');
+            $table->text('path_img')->nullable();
             $table->string('slug',120)->unique();
 
             $table->unsignedBigInteger('user_id');

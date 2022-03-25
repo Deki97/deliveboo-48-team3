@@ -94,9 +94,17 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Restaurant $restaurant, Request $request)
     {
-        $restaurant = Restaurant::findOrFail($id);
+
+        $user_id = $restaurant->user->id;
+        
+        if ($user_id !== Auth::user()->id) {
+            return redirect()->route('admin.home');
+        }
+        /* $restaurant = Restaurant::findOrFail($id); */
+        $user_id = $request->user()->id;
+        $restaurant = User::find($user_id)->restaurant;
         $categories = Category::all();
 
         return view('admin.restaurants.edit', compact('restaurant', 'categories'));
@@ -120,8 +128,8 @@ class RestaurantController extends Controller
         if($form_data['restaurant_name'] != $restaurant->restaurant_name) {
             $form_data['slug'] = Restaurant::getUniqueSlugFromName($form_data['restaurant_name']);
         }
-
-        if($form_data['image']) {
+        
+        if(isset($form_data['image'])) {
             // Cancello il file vecchio
             if($restaurant->path_img) {
                 Storage::delete($restaurant->path_img);
@@ -173,7 +181,7 @@ class RestaurantController extends Controller
             'address' => 'required|max:255',
             'vat' => 'required|max:11',
             'phone' => 'required|max:11',
-            'image' => 'required|image|max:512'
+            'image' => 'image|max:512'
         ];
     }
     

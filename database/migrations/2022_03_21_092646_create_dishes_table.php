@@ -17,7 +17,7 @@ class CreateDishesTable extends Migration
             $table->id();
             $table->string('name',100);
             $table->text('description');
-            $table->text('path_img');
+            $table->text('path_img')->nullable();
             $table->decimal('price',5,2);
             $table->boolean('visible')->default(true);
             $table->string('slug',120)->unique();

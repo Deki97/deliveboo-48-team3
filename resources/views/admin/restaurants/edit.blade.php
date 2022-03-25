@@ -58,7 +58,7 @@
         @error('phone')
             <div class="alert alert-danger">Campo obbligatorio</div>
         @enderror
-
+        
         {{-- insert img --}}
         <div class="mb-3">
             <label for="image" class="form-label">Immagine</label>
