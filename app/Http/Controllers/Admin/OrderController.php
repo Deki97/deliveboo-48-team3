@@ -22,10 +22,9 @@ class OrderController extends Controller
         $restaurantId = $restaurants[0]->id;
         
         $dishes = Dish::where('restaurant_id', $restaurantId)->get();
-
         $dishArray = collect([]);
         foreach ($dishes as $dish) {
-            $dishArray->push(['id' =>$dish->id]);
+            $dishArray->push(['id' =>$dish->id, 'price' =>$dish->price]);
         };
         
         $dishOrders = DishOrder::All();
@@ -37,6 +36,25 @@ class OrderController extends Controller
                     $dishOrderArray->push([Order::where('id', $dishOrder->order_id)->get()]);
                 }
             } 
+        }
+
+
+        $dishprices = collect([]);
+        foreach($dishArray as $dish) {
+            foreach($dishOrders as $dishOrder){
+                if($dish['id'] == $dishOrder->dish_id) {
+                    $dishprices->push([$dish['price'],$dishOrder->quantity]);
+                    foreach($dishprices as $dishprice) {
+                        $dishprice = (float)$dishprice[0];
+                        
+                        $sum[] = $dishprice * $dishOrder->quantity;
+
+                        // for($i = 0; $i <= $sum.length; $i++) {
+                        //     $total_price = $sum += $sum;
+                        // }
+                    }
+                }
+            }
         }
         return view('admin.orders.index', compact('dishOrderArray'));
     }
