@@ -1,12 +1,17 @@
 <template>
     <div class="home">
-        Ciao sono home
+        <Banner />
     </div>
 </template>
 
 <script>
+import Banner from '../components/Banner.vue';
+
 export default {
-    name: 'Home'
+    name: 'Home',
+    components: {
+        Banner
+    }
 }
 </script>
 
