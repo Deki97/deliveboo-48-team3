@@ -30,3 +30,5 @@ export default {
 @import '../../sass/app.scss';
 
 </style>
+
+
