@@ -27,6 +27,7 @@
     "dependencies": {
         "@fontsource/titillium-web": "^4.5.5",
         "vue-burger-menu": "^2.0.5",
+        "vue-carousel": "^0.18.0",
         "vue-router": "^3.5.3"
     }
 }

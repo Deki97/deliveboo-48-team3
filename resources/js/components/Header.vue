@@ -10,18 +10,9 @@
                 <!-- Desktop Menu -->
                 <div class="collapse navbar-collapse align-items-center" id="navbarNav">
                     <ul class="navbar-nav">
-                    <li class="nav-item active mx-3">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#">Chi siamo</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#">Lavora con noi</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#">Contattaci</a>
-                    </li>
+                        <li v-for="(link,index) in navbar_menu" :key="index" class="nav-item active mx-3">
+                            <router-link class="nav-link" :to="{name:link.name}" active-class="active-link">{{link.label}}</router-link>
+                        </li>
                     </ul>
                 </div>
 
@@ -72,11 +63,32 @@ export default {
     components: {
         Slide
     },
+    // DATA
     data() {
         return {
-            open: false
+            open: false,
+
+            navbar_menu:[
+                {
+                'name':'home',
+                'label':'Home',
+                },
+                {
+                'name':'chi-siamo',
+                'label':'Chi siamo',
+                },
+                {
+                'name':'lavora-con-noi',
+                'label':'lavora con noi',
+                },
+                {
+                'name':'contattaci',
+                'label':'contattaci',
+                },
+            ],
         };
     },
+    // METHODS
     methods: {
         openMenu() {
             this.open = true;
@@ -96,6 +108,7 @@ header {
     text-transform: uppercase;
     width: 100%;
     border-bottom: 1px solid $page_secondary_color;
+   
     
     nav {
         width: 100%;
@@ -158,9 +171,13 @@ header {
             .burger-buttons {
                 flex-grow: 1;
                 justify-content: center;
+                width:100%;
+                margin-top: 300px;
 
                 .single-burger-button {
-                    margin: 5px 0;
+                    display:inline-block;
+                    margin: 10px 0;
+                    width: 120px;
 
                     .button-icon {
                         margin-left: 5px;

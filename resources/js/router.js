@@ -4,6 +4,10 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import Home from './pages/Home.vue';
+import About from './pages/About.vue';
+import WorkWithUs from './pages/WorkWithUs.vue';
+import Contacts from './pages/Contacts.vue';
+import NotFound from './pages/NotFound.vue';
 
 const router = new VueRouter({
     mode: "history",
@@ -12,17 +16,22 @@ const router = new VueRouter({
             path: "/",
             name: "home",
             component: Home
-        }
-        // {
-        //     path: "/about",
-        //     name: "about",
-        //     component: About
-        // },
-        // {
-        //     path: "/blog",
-        //     name: "blog",
-        //     component: Blog
-        // },
+        },
+        {
+            path: "/chi-siamo",
+            name: "chi-siamo",
+            component: About
+        },
+        {
+            path: "/lavora-con-noi",
+            name: "lavora-con-noi",
+            component: WorkWithUs
+        },
+        {
+            path: "/contattaci",
+            name: "contattaci",
+            component: Contacts
+        },
         // {
         //     path: "/blog/:slug",
         //     name: "post-details",
@@ -33,11 +42,7 @@ const router = new VueRouter({
         //     name: "latest-news",
         //     component: LatestNews
         // },
-        // {
-        //     path: "/tags",
-        //     name: "tags-list",
-        //     component: TagsList
-        // },
+        
         // {
         //     path: "/tags/:slug",
         //     name: "tag-details",
@@ -48,11 +53,11 @@ const router = new VueRouter({
         //     name: "contacts",
         //     component: Contacts
         // },
-        // {
-        //     path: "/*",
-        //     name: "not-found",
-        //     component: NotFound
-        // },
+        {
+            path: "/*",
+            name: "not-found",
+            component: NotFound
+        },
     ]
 });
 
