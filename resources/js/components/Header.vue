@@ -95,6 +95,7 @@ header {
     font-size: 20px;
     text-transform: uppercase;
     width: 100%;
+    border-bottom: 1px solid $page_secondary_color;
     
     nav {
         width: 100%;
