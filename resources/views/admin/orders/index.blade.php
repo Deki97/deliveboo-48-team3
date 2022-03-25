@@ -12,25 +12,18 @@
         <th scope="col">Indirizzo</th>
         <th scope="col">Prezzo Totale</th>
         <th scope="col"></th>
-
-
       </tr>
     </thead>
     <tbody>
-        @foreach ($dishOrderArray as $dishOrder)
-          @foreach ($dishOrder as $dish)
-            @foreach ($dish as $singleDish)
-              <tr>
-                <td>{{$singleDish->name}}</td>
-                <td>{{$singleDish->lastname}}</td>
-                <td>{{ $singleDish->address }}</td>
-                <td>{{ $singleDish->tot_price }}€</td>
-                <td><a href="{{route('admin.details', ['id' => $singleDish->id])}}">Dettagli</a></td>
-              </tr>
-            @endforeach
+        @foreach ($orders as $key=>$order)
+          <tr>
+            <td>{{$order['name']}}</td>
+            <td>{{$order['lastname']}}</td>
+            <td>{{$order['address']}}</td>
+            <td>{{str_replace(".",",",number_format($order['tot_price'], 2))}}€</td>
+            <td><a href="{{route('admin.details', ['id' => $order->id])}}">Dettagli</a></td>
+          </tr>
         @endforeach
-      @endforeach
     </tbody>
   </table>
-
 @endsection

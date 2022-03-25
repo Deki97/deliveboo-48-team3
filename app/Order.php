@@ -12,6 +12,12 @@ class Order extends Model
     public function DishOrder(){
         return $this->hasMany('App\DishOrder');
     }
+
+    public function user()
+    {
+        return $this->belongsTo("App\User");
+    }
+    
     public static function checkStatus($status){
         if($status === 0){
             return ('Non Pagato');
