@@ -47,9 +47,19 @@ export default {
         border-radius: 10px;
         margin-top: 30px;
         background-color: rgba($page_primary_color, .4);
+        border: 2px solid $page_secondary_color;
 
         h6 {
             color: white;
+        }
+
+        input {
+            border: 2px solid $page_secondary_color;
+        }
+
+        span {
+            background-color: $page_secondary_color;
+            cursor: pointer;
         }
     }
 }
