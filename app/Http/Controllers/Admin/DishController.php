@@ -115,7 +115,7 @@ class DishController extends Controller
             $form_data['slug'] = Dish::getUniqueSlugFromName($form_data['name']);
         }
 
-        if($form_data['image']) {
+        if(isset($form_data['image'])) {
             // Cancello il file vecchio
             if($dish->path_img) {
                 Storage::delete($dish->path_img);
@@ -159,7 +159,7 @@ class DishController extends Controller
         return [
             'name' => 'required|max:100',
             'description' => 'required|max:60000',
-            'image' => 'required|image|max:512',
+            'image' => 'image|max:512',
             'price' => 'required|numeric|gt:0',
             'visible' => 'required',
         ];

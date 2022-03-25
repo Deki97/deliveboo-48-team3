@@ -13,16 +13,16 @@
             Nome: {{$order->name}}
            </li>
            <li>
-            Nome: {{$order->lastname}}
+            Cognome: {{$order->lastname}}
            </li>
            <li>
-            Nome: {{$order->address}}
+            Indirizzo: {{$order->address}}
            </li>
            <li>
-            Nome: {{$order->phone}}
+            Telefono: {{$order->phone}}
            </li>
            <li>
-            Nome: {{$order->email}}
+            E-mail: {{$order->email}}
            </li>
        </ul>
    </section>
