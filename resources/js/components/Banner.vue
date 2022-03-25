@@ -3,6 +3,15 @@
         <div class="container">
             <div class="banner-text">
                 <h1>Il cibo che vuoi<br>comodamente dal tuo divano</h1>
+                <div class="searchbar-container">
+                    <h6>Cerca per ristorante o categoria</h6>
+                    <div class="input-group rounded">
+                    <input type="search" class="form-control rounded" placeholder="Cerca" aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text border-0 ml-3" id="search-addon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -15,6 +24,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../sass/app.scss';
+
 .banner {
     background-image: url('../../assets/img/jumbotron.jpg');
     background-size: cover;
@@ -27,6 +38,19 @@ export default {
     h1 {
         color: white;
         font-weight: 700;
+    }
+
+    .searchbar-container {
+        max-width: 400px;
+        background-color: pink;
+        padding: 20px 20px 40px 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+        background-color: rgba($page_primary_color, .4);
+
+        h6 {
+            color: white;
+        }
     }
 }
 </style>
