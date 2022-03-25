@@ -189,8 +189,8 @@ header {
 
             .buttons {
                 button {
-                    margin: 0 5px;
-                    padding: 5px 20px;
+                    margin: 0 2px;
+                    padding: 5px 15px;
 
                     .button-icon {
                         margin-left: 5px;
