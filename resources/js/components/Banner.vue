@@ -1,6 +1,5 @@
 <template>
     <div class="banner">
-        <!-- <div class="overlay"></div> -->
         <div class="container">
             <div class="banner-text">
                 <h1>Il cibo che vuoi<br>comodamente dal tuo divano</h1>
@@ -24,18 +23,6 @@ export default {
     padding: 250px 0;
     position: relative;
     box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
-
-    // .overlay {
-    //     position: absolute;
-    //     width: 100%;
-    //     height: 100%;
-    //     top: 0;
-    //     left: 0;
-    //     right: 0;
-    //     bottom: 0;
-    //     background-color: rgba(0,0,0,0.5);
-
-    // }
 
     h1 {
         color: white;
