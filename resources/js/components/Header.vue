@@ -95,6 +95,7 @@ header {
     font-size: 20px;
     text-transform: uppercase;
     width: 100%;
+    border-bottom: 1px solid $page_secondary_color;
     
     nav {
         width: 100%;
@@ -188,8 +189,8 @@ header {
 
             .buttons {
                 button {
-                    margin: 0 5px;
-                    padding: 5px 20px;
+                    margin: 0 2px;
+                    padding: 5px 15px;
 
                     .button-icon {
                         margin-left: 5px;
