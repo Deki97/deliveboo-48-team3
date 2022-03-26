@@ -8,7 +8,7 @@ import About from './pages/About.vue';
 import WorkWithUs from './pages/WorkWithUs.vue';
 import Contacts from './pages/Contacts.vue';
 import NotFound from './pages/NotFound.vue';
-import Categories from './pages/Categories.vue';
+// import Categories from './pages/Categories.vue';
 
 
 const router = new VueRouter({
@@ -50,11 +50,11 @@ const router = new VueRouter({
         //     name: "tag-details",
         //     component: TagDetails
         // },
-        {
-            path: "/categories",
-            name: "categories",
-            component: Categories
-        },
+        // {
+        //     path: "/categories",
+        //     name: "categories",
+        //     component: Categories
+        // },
         {
             path: "/*",
             name: "not-found",
