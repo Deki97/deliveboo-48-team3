@@ -1,5 +1,6 @@
 window.Vue = require('vue');
-
+window.axios = require('axios');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -13,6 +14,7 @@ window.Vue = require('vue');
 
 import App from './views/App.vue';
 import router from './router.js';
+
 
 
 
