@@ -19,5 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::get('payment/generate', 'Api\Payment\PaymentController@generate');
+Route::post('payment/make/payment', 'Api\Payment\PaymentController@makePayment');
+
 // Rotta per Category
 Route::get('/categories','Api\CategoryController@getCategories');
