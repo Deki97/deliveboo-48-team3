@@ -89,9 +89,13 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Dish $dish)
     {
-        $dish = Dish::findOrFail($id);
+        
+        if( $dish->restaurant->user_id != Auth::id() ) {
+
+            return redirect()->route('admin.restaurants.index');
+        }
 
         return view('admin.dishes.edit', compact('dish'));
     }
