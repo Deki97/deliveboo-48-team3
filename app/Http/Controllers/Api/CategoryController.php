@@ -9,15 +9,15 @@ use App\Category;
 class CategoryController extends Controller
 {
     // CHIAMATA AXIOS PER CATEGORIES
-    public function index(){
+    public function getCategories(){
         $categories = Category::all();
-        dd($categories);
-        $response_array = [
-            'success' => true,
-            'results' => $categories
-            ];
+        // dd($categories);
+       return response()->json(['success' => true,
+       'results' => $categories
+       ]); 
+            
 
-        response()->json($response_array);
+        
 
         // dd($response_array);
     }

@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Rotta per Category
-// Route::get('/categories','Api\CategoryController@index');
+Route::get('/categories','Api\CategoryController@getCategories');
