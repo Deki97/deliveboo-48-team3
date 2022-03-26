@@ -80,10 +80,16 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Restaurant $restaurant, Request $request)
     {
-        $restaurant = Restaurant::FindOrFail($id);
-        $dishes = Dish::where('restaurant_id',$id)->get();
+        $user_id = $restaurant->user->id;
+        if ($user_id !== Auth::user()->id) {
+            return redirect()->route('admin.restaurants.index');
+        }
+        $user_id = $request->user()->id;
+        $restaurant = User::find($user_id)->restaurant;
+        $dishes = Dish::where('restaurant_id',$user_id)->get();
+        
 
         return view('admin.restaurants.show',compact('restaurant','dishes'));
     }
