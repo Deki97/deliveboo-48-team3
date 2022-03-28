@@ -32,6 +32,19 @@
                                 </span>
                             </div>
                         </div>
+                        <!-- --------------------------------------------------------------------- -->
+                        <div class="bg-white">
+                            <div  v-if="filteredRestaurants.length > 0">
+                                <div v-for="(restaurant, index) in filteredRestaurants" :key="index">
+                                    {{restaurant}}
+                                </div>
+                            </div>
+                            <div class="bg.white" v-else>
+                                nessun risultato trovato
+                            </div>
+                        </div>
+                        <!-- ---------------------------------------------------------------------- -->
+                        
                     </div>
                 </div>
 
@@ -69,31 +82,13 @@ export default {
             });
         },
         getFilteredRestaurants() {
-            // for(let i = 0; i < this.allRestaurants.length; i++) {
-            //     if(this.allRestaurants[i].restaurant_name.indexOf(this.inputText)) {
-            //         this.filteredRestaurants.push(this.allRestaurants[i]);
-            //         console.log(this.filteredRestaurants);
-            //     }
-                
-            // }
+            this.filteredRestaurants = [];
             this.allRestaurants.forEach(restaurant => {
-                    let test = '';
                     if(restaurant.restaurant_name.toLowerCase().includes(this.inputText.toLowerCase().trim()) && this.inputText.trim() !== '') {
-                        this.filteredRestaurants = restaurant;
-                        this.test = '';
-                    } else if (this.inputText.trim() == '') {
-                        this.test = 'compaio perchè la ricerca è vuota';
-                        // console.log(test);
-                    } else {
-                        this.test = 'Nessun risultato corrisponde alla ricerca';
-                    }
+                        this.filteredRestaurants.push(restaurant);
+                    } 
+                    
                 });
-                console.log(this.filteredRestaurants);
-                // this.filteredRestaurants = [];
-
-                console.log(this.test);
-                // dai speriamo che vada, quasi
-            
         }
     },
     created: function() {
@@ -170,5 +165,11 @@ export default {
             transform: scale(1.2);
         }
     }
+
+// ----------
+    .bg-white{
+        background-color: white;
+    }
+// ----------
 }
 </style>
