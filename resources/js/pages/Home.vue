@@ -2,18 +2,21 @@
     <div class="home">
         <Banner />
         <Categories />
+        <Restaurant />
     </div>
 </template>
 
 <script>
 import Banner from '../components/Banner.vue';
 import Categories from './Categories.vue';
+import Restaurant from '../components/Restaurant.vue';
 
 export default {
     name: 'Home',
     components: {
         Banner,
-        Categories
+        Categories,
+        Restaurant
     }
 }
 </script>
