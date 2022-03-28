@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Payment;
+namespace App\Http\Controllers\Api;
 
 use Braintree\Gateway;
 use App\Http\Requests\Payment\PaymentRequest;
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function generate(PaymentRequest $request, Gateway $gateway) {
+    public function generate(Gateway $gateway) {
         $token = $gateway->clientToken()->generate();
         $data = [
             "token" => $token

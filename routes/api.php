@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('Api')->group(function () {
+
+    Route::get('/restaurants', 'RestaurantController@index');
+    Route::get('/restaurants/{restaurant}', 'RestaurantController@show');
+    Route::get('/payments', 'PaymentController@generate');
+    Route::post('/payments', 'PaymentController@makepayment');
+    Route::apiResource('orders', 'OrderController');
 });
-
-Route::get('dishes', 'Api\DishController@index');
-Route::get('payments/generate', 'Api\Payment\PaymentController@generate');
-Route::post('payments/make/payment', 'Api\Payment\PaymentController@makePayment');
-
 // Rotta per Category
 Route::get('/categories','Api\CategoryController@getCategories');
