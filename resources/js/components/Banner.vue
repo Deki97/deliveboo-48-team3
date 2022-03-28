@@ -26,8 +26,8 @@
                         <div class="searchbar-container animate__animated animate__fadeInUp animate_delay-5s">
                         <h6>Cerca per ristorante o categoria</h6>
                             <div class="input-group rounded">
-                                <input type="search" class="form-control rounded" placeholder="Cerca" aria-label="Search" aria-describedby="search-addon" />
-                                <span class="input-group-text border-0 ml-3" id="search-addon">
+                                <input  type="search" class="form-control rounded" placeholder="Cerca" v-model="inputText">
+                                <span @click="getFilteredRestaurants()" class="input-group-text border-0 ml-3" id="search-addon">
                                     <i class="fas fa-search"></i>
                                 </span>
                             </div>
@@ -52,6 +52,52 @@ export default {
     name: 'Banner',
     components: {
         VueTyper
+    },
+    data: function() {
+        return {
+            inputText: '',
+            allRestaurants: [],
+            filteredRestaurants: []
+        }
+    },
+    methods: {
+        getAllRestaurants() {
+            axios.get('http://127.0.0.1:8000/api/restaurants')
+            .then((response) => {
+                this.allRestaurants = response.data;
+                // console.log(this.allRestaurants);
+            });
+        },
+        getFilteredRestaurants() {
+            // for(let i = 0; i < this.allRestaurants.length; i++) {
+            //     if(this.allRestaurants[i].restaurant_name.indexOf(this.inputText)) {
+            //         this.filteredRestaurants.push(this.allRestaurants[i]);
+            //         console.log(this.filteredRestaurants);
+            //     }
+                
+            // }
+            this.allRestaurants.forEach(restaurant => {
+                    let test = '';
+                    if(restaurant.restaurant_name.toLowerCase().includes(this.inputText.toLowerCase().trim()) && this.inputText.trim() !== '') {
+                        this.filteredRestaurants = restaurant;
+                        this.test = '';
+                    } else if (this.inputText.trim() == '') {
+                        this.test = 'compaio perchè la ricerca è vuota';
+                        // console.log(test);
+                    } else {
+                        this.test = 'Nessun risultato corrisponde alla ricerca';
+                    }
+                });
+                console.log(this.filteredRestaurants);
+                // this.filteredRestaurants = [];
+
+                console.log(this.test);
+                // dai speriamo che vada, quasi
+            
+        }
+    },
+    created: function() {
+        this.getAllRestaurants();
     }
 }
 </script>
