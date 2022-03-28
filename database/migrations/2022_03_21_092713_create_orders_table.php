@@ -18,10 +18,8 @@ class CreateOrdersTable extends Migration
             $table->string('name',50);
             $table->string('lastname',50);
             $table->string('address',100);
-            $table->string('phone',10);
             $table->string('email',100);
-            $table->decimal('tot_price',5,2);
-            $table->tinyInteger('delivery_time');
+            $table->float('amount', 5, 2);
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public function dish() {
-        return $this->belongsToMany('App\Dish');
+    public function dishes() {
+        return $this->belongsToMany('App\Dish')->withPivot('quantity');
     }
     public function DishOrder(){
         return $this->hasMany('App\DishOrder');
