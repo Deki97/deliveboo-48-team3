@@ -4,7 +4,7 @@
             <div class="menus d-flex align-items-center">
                 <!-- Logo -->
                 <div class="header-logo">
-                    <img src="../../assets/img/fork-logo.png" alt="">
+                    <img src="../../assets/img/fast-food.png" alt="Deliveboo Logo">
                 </div>
 
                 <!-- Desktop Menu -->
@@ -30,11 +30,11 @@
                     noOverlay
                     width="250"
                     >
+
                     <!-- Burger Links -->
-                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-home"></i></span>Home</router-link>
-                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-user-friends"></i></span>Chi siamo</router-link>
-                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fas fa-briefcase"></i></span>Lavora</router-link>
-                    <router-link class="burger-link" to="/" active-class="active-link"><span class="link-icon"><i class="fa-solid fa-phone"></i></span>Contattaci</router-link>
+                    <li v-for="(link,index) in navbar_menu" :key="index">
+                        <router-link class="burger-link" :to="{name:link.name}" active-class="active-link">{{link.label}}</router-link>
+                    </li>
 
                     <div class="burger-buttons d-flex flex-column">
                         <!-- Burger Menu Buttons -->
@@ -48,9 +48,7 @@
                     </div>
                     </Slide>
                 </div>
-            </div>
-
-            
+            </div>  
         </nav>
     </header>
 </template>
@@ -79,11 +77,11 @@ export default {
                 },
                 {
                 'name':'lavora-con-noi',
-                'label':'lavora con noi',
+                'label':'Lavora con noi',
                 },
                 {
                 'name':'contattaci',
-                'label':'contattaci',
+                'label':'Contattaci',
                 },
             ],
         };
@@ -101,14 +99,12 @@ export default {
 @import '../../sass/app.scss';
 
 header {
-    background-color: $page_primary_color;
-    color: black;
+    background-color: #000103;
+    // color: black;
     padding: 20px;
     font-size: 20px;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     width: 100%;
-    border-bottom: 1px solid $page_secondary_color;
-   
     
     nav {
         width: 100%;
@@ -135,30 +131,33 @@ header {
                     justify-content: center;
                     .nav-item {
                         .nav-link {
-                            color: $page_secondary_color;
+                            color: #fec866;
                             transition: 0.3s;
+                            font-size: 24px;
+                            font-weight: 600;
 
                             &:hover {
                                 color: white;
                                 transition: 0.3s;
+                                transform: translateY(-5px);
                             }
                         }
                     }
                 }
             }
             .bm-burger-bars {
-            background-color: $page_secondary_color;
+                background-color: #fec866;
             }
 
             .bm-menu {
-                background-color: $page_tertiary_color;
+                background-color: #7c2a02;
                 border: 5px $page_secondary_color;
             }
 
             .burger-link {
-                color: $page_secondary_color;
+                color: #fec866;
                 transition: 0.3s;
-                text-transform: capitalize;
+                font-weight: 600;
 
                 &:hover {
                     text-decoration: none;
@@ -179,6 +178,12 @@ header {
                     margin: 10px 0;
                     width: 120px;
 
+                    .btn {
+                        background-color: #fec866;
+                        color: #7c2a02;
+                        border-radius: 20px;
+                    }
+
                     .button-icon {
                         margin-left: 5px;
                     }
@@ -186,28 +191,28 @@ header {
             }
 
             .bm-item-list {
-                margin-left: 1px;
+                margin-left: 5px;
             }
 
             .cross-style {
                 position: absolute;
                 top: 24px;
-                left: 30px;
+                left: 24px;
                 cursor: pointer;
             }
 
             .bm-cross {
-                background-color: $page_secondary_color;
-            }
-
-            .link-icon {
-                margin-right: 20px;
+                background-color: #fec866;
             }
 
             .buttons {
                 button {
                     margin: 0 2px;
                     padding: 5px 15px;
+                    background-color: #fec866;
+                    color: #7c2a02;
+                    transition: 0.2s;
+                    border-radius: 20px;
 
                     .button-icon {
                         margin-left: 5px;

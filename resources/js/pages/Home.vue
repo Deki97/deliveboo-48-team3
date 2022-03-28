@@ -1,23 +1,27 @@
 <template>
     <div class="home">
         <Banner />
-        <CategorySlider />
+        <Categories />
     </div>
 </template>
 
 <script>
 import Banner from '../components/Banner.vue';
-import CategorySlider from '../components/CategorySlider.vue'
+import Categories from './Categories.vue';
 
 export default {
     name: 'Home',
     components: {
         Banner,
-        CategorySlider,
+        Categories
     }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '../../sass/app.scss';
 
+.home {
+    background-color: $page_tertiary_color;
+}
 </style>
