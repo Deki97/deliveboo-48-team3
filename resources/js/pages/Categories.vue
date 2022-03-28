@@ -1,6 +1,9 @@
 <template>
-    <div>
-        <div v-for="category in categories" :key="category.id" >{category.name}</div>
+    <div class="categories">
+        <div class="container">
+            <h2>Le nostre categorie</h2>
+            <div v-for="category in categories" :key="category.id" >{{category.name}}</div>
+        </div>
     </div>
 </template>
 
@@ -9,9 +12,7 @@ export default {
     name:'Categories',
     data:function(){
         return {
-            categories:[],
-
-            
+            categories:[]
         };
     },
     methods:{
@@ -34,4 +35,12 @@ export default {
     },
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../../sass/app.scss';
+
+.categories {
+    background-color: $page_tertiary_color;
+}
+</style>
 
