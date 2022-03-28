@@ -26,10 +26,11 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $restaurant = Restaurant::find($id);
-        $restaurant_dishes = Dish::where('restaurant_id', $id)->with('restaurant')->get();
+        // $restaurant = Restaurant::find($slug);
+        $restaurant = Restaurant::where('slug', '=', $slug)->first();
+        $restaurant_dishes = Dish::where('restaurant_id', $restaurant->id)->with('restaurant')->get();
         $filtered_dish = [];
         foreach ($restaurant_dishes as $dish) {
             $filtered_dish[] = [
@@ -43,6 +44,8 @@ class RestaurantController extends Controller
                 'quantity' => 0
             ];
         }
+
+        // dd($slug);
 
         $result = [
             'restaurant' => $restaurant,
