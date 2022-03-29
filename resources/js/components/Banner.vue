@@ -23,15 +23,7 @@
                     <p>Scegli tra un'ampia varietà di piatti e ristoranti,<br>
                     provvederemo alla consegna nel giro di qualche minuto!</p>
 
-                        <div class="searchbar-container animate__animated animate__fadeInUp animate_delay-5s">
-                        <h6>Cerca per ristorante o categoria</h6>
-                            <div class="input-group rounded">
-                                <input  type="search" class="form-control rounded" placeholder="Cerca" v-model="inputText">
-                                <span @click="$emit('restaurants',inputText)" class="input-group-text border-0 ml-3" id="search-addon">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </div>
-                        </div>
+                        
                         
                         <!-- --------------------------------------------------------------------- -->
                         <!-- <div class="bg-white">
@@ -67,7 +59,7 @@ export default {
     },
     data: function() {
         return {
-            inputText: '',
+            
             
             
         }
@@ -120,29 +112,7 @@ export default {
             margin: 20px 0;
         }
 
-        .searchbar-container {
-            max-width: 400px;
-            padding: 20px 20px 40px 20px;
-            border-radius: 10px;
-            margin-top: 30px;
-            background-color: darken(#fec866, 20%);
-
-            h6 {
-                color: #7c2a02;
-                font-size: 18px;
-                font-weight: 600;
-            }
-
-            input {
-                border: 2px solid $page_secondary_color;
-            }
-
-            span {
-                background-color: #7c2a02;
-                color: darken(#fec866, 20%);
-                cursor: pointer;
-            }
-        }
+        
     }
 
     .banner-logo {

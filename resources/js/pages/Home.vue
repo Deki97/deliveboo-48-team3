@@ -1,9 +1,9 @@
 <template>
     <div class="home">
-        <Banner @restaurants = 'searchDone' />
+        <Banner />
         <!-- {{getFilteredRestaurants()}} -->
         <Categories />
-        <Restaurant :restaurantFiltered="filteredRestaurants" />
+        <Restaurant />
     </div>
 </template>
 
@@ -28,11 +28,6 @@ export default {
         }
     },
       methods:{
-        searchDone:function(value){
-        this.searchBar = value;
-        
-        },
-
          getAllRestaurants() {
             axios.get('http://127.0.0.1:8000/api/restaurants')
             .then((response) => {
@@ -44,17 +39,7 @@ export default {
         
     },
     computed:{
-         getFilteredRestaurants:function() {
-            this.filteredRestaurants = [];
-            this.allRestaurants.forEach(restaurant => {
-                    if(restaurant.restaurant_name.toLowerCase().includes(this.searchBar.toLowerCase().trim()) && this.searchBar.trim() !== '') {
-                        this.filteredRestaurants.push(restaurant);
-                    } 
-                    
-                });
-                return this.filteredRestaurants;
-                
-        }
+         
     },
 
   
