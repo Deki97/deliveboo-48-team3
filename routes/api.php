@@ -22,6 +22,6 @@ Route::namespace('Api')->group(function () {
     Route::get('/payments', 'PaymentController@generate');
     Route::post('/payments', 'PaymentController@makepayment');
     Route::apiResource('orders', 'OrderController');
+    Route::get('/categories','CategoryController@getCategories');
 });
-// Rotta per Category
-Route::get('/categories','Api\CategoryController@getCategories');
+

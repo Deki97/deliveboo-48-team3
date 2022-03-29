@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Dish;
+use App\Category;
 
 class RestaurantController extends Controller
 {
@@ -16,7 +17,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::with('dish')->get();
+        $restaurants = Restaurant::with('dish','category')->get();
         return response()->json($restaurants);
     }
 
