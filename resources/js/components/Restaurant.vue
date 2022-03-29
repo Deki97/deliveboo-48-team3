@@ -2,7 +2,27 @@
     <div class="restaurant">
         <div class="container">
             <h2>I nostri ristoranti</h2>
-            <div class="restaurant-wrapper">
+            <div class="restaurant-wrapper ">
+                <div class="d-flex flex-wrap" v-if="restaurantFiltered.length > 0" >
+                    <div v-for="restaurant in restaurantFiltered" :key="restaurant.id" >
+                        <div class="card mx-3 my-3" style="width: 18rem;">
+                            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                            <div class="card-body">
+                                <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                                <p class="card-text">Testo di prova</p>
+                                <router-link :to="{
+                            name: 'restaurant.details',
+                            params: { slug: restaurant.slug }
+                        }">
+                        <button class="btn btn-primary">
+                            Vai al ristorante
+                        </button>
+                        </router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap" v-else>
                     <div v-for="restaurant in restaurants" :key="restaurant.id" >
                         <div class="card mx-3 my-3" style="width: 18rem;">
                             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
@@ -20,6 +40,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
@@ -32,6 +53,9 @@ export default {
         return {
             restaurants: []
         };
+    },
+    props:{
+        restaurantFiltered:Array,
     },
     methods: {
         // getRestaurants:function(){

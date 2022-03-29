@@ -27,22 +27,21 @@
                         <h6>Cerca per ristorante o categoria</h6>
                             <div class="input-group rounded">
                                 <input  type="search" class="form-control rounded" placeholder="Cerca" v-model="inputText">
-                                <span @click="getFilteredRestaurants()" class="input-group-text border-0 ml-3" id="search-addon">
+                                <span @click="$emit('restaurants',inputText)" class="input-group-text border-0 ml-3" id="search-addon">
                                     <i class="fas fa-search"></i>
                                 </span>
                             </div>
                         </div>
+                        
                         <!-- --------------------------------------------------------------------- -->
-                        <div class="bg-white">
+                        <!-- <div class="bg-white">
                             <div  v-if="filteredRestaurants.length > 0">
-                                <div v-for="(restaurant, index) in filteredRestaurants" :key="index">
-                                    {{restaurant}}
-                                </div>
+                                <p>{{filteredRestaurants.length - 1}} risultati trovati</p>
                             </div>
                             <div class="bg.white" v-else>
-                                nessun risultato trovato
+                                <p>nessun risultto trovato</p>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- ---------------------------------------------------------------------- -->
                         
                     </div>
@@ -69,30 +68,17 @@ export default {
     data: function() {
         return {
             inputText: '',
-            allRestaurants: [],
-            filteredRestaurants: []
+            
+            
         }
     },
+   
     methods: {
-        getAllRestaurants() {
-            axios.get('http://127.0.0.1:8000/api/restaurants')
-            .then((response) => {
-                this.allRestaurants = response.data;
-                // console.log(this.allRestaurants);
-            });
-        },
-        getFilteredRestaurants() {
-            this.filteredRestaurants = [];
-            this.allRestaurants.forEach(restaurant => {
-                    if(restaurant.restaurant_name.toLowerCase().includes(this.inputText.toLowerCase().trim()) && this.inputText.trim() !== '') {
-                        this.filteredRestaurants.push(restaurant);
-                    } 
-                    
-                });
-        }
+       
+        
     },
     created: function() {
-        this.getAllRestaurants();
+        
     }
 }
 </script>
