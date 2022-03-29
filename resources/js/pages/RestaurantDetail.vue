@@ -37,7 +37,7 @@
                   }"
                 ></div>
                 <div class="description-wrap mw-100 text-center">
-                  <div class="description text-white">
+                  <div class="description">
                     <h5 class="plate-name">{{ dish.name }}</h5>
                     <p class="plate-description">{{ dish.description }}</p>
                     <div
@@ -264,8 +264,9 @@ body {
   margin-top: 100px;
   height: 500px;
   position: relative;
-  background: #FF5858;
+  background-color: #fec866;
   transition: all 0.3s ease-out;
+  border-radius: 50px;
 }
 .card .description-wrap {
   padding: 105px 30px;
@@ -273,7 +274,7 @@ body {
   overflow: hidden;
 }
 .card .description {
-  color: black;
+  color: #7c2a02;
   text-align: center;
   position: relative;
   display: flex;
@@ -287,6 +288,8 @@ body {
   overflow-x: auto;
   transform: translateY(100%);
   opacity: 0;
+  transform: translateY(0%);
+  opacity: 1;
 }
 .card .description > * {
   width: 100%;
@@ -301,27 +304,27 @@ body {
 .pro-pic {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: 2%;
   width: 100%;
   height: 100%;
   transform: translatex(-50%);
   background-size: cover;
   background-position: center center;
   transition: all 0.5s ease-out;
-}
-.card:hover .pro-pic {
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 3px solid;
+  border: 3px solid #7c2a02;
+}
+.card:hover .pro-pic {
+  
 }
 .card:hover {
-  border-radius: 50px;
+  cursor: pointer;
 }
 .card:hover .description {
-  transform: translateY(0%);
-  opacity: 1;
+  
 }
 .cart-modal-container {
   width: 100%;
@@ -341,11 +344,12 @@ body {
   font-weight: 900;
 }
 .plate-description {
-  font-size: 13px;
-  font-style: italic;
+  font-size: 20px;
+//   font-style: italic;
 }
 .plate-quantity {
   font-size: 60px;
+  font-weight: 600;
 }
 .quantity-btn {
   font-size: 15px;
