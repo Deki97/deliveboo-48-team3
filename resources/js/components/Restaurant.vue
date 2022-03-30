@@ -7,70 +7,86 @@
                 <div class="input-group rounded">
                     <input @keyup="getFilteredRestaurants()" type="search" class="form-control rounded" placeholder="Cerca" v-model="inputText">
                 </div>
-                <div v-for="category in categories" :key="category.id">  
-                    <input type="checkbox" v-model="checkbox" :value="category.name">
-                    
-                    <label>{{category.name}}</label>
+                <!-- CHECKBOX -->
+                <div class="check_container mt-2">
+                    <div class="row row-cols-3">
+                            <div class="col" v-for="category in categories" :key="category.id">  
+                                <input type="checkbox" v-model="checkbox" :value="category.name">
+                                <label>{{category.name}}</label>
+                           </div>
+                    </div>
                 </div>
+                <!-- END CHECKBOX -->
             </div>
             <!-- END SEARCHBAR -->
-            <h2>I nostri ristoranti</h2>
+            <h2 class="text-center page_titles">I nostri ristoranti</h2>
             <div class="restaurant-wrapper ">
-                <div class="d-flex flex-wrap" v-if="filteredRestaurants.length > 0" >
+                <div class="d-flex justify-content-center flex-wrap" v-if="filteredRestaurants.length > 0" >
                     <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" >
-                        <div class="card mx-3 my-3" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
-                                <p class="card-text">Testo di prova</p>
+                        <!-- RESTAURANT CARD -->
+                        <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;">
+                            <div class="card-body text-center">
+                                <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
+                                <!-- <p class="card-text">Testo di prova</p> -->
+                                <div class="decoration"></div>
                                 <router-link :to="{
                             name: 'restaurant.details',
                             params: { slug: restaurant.slug }
                         }">
-                        <button class="btn btn-primary">
+                        <button class="btn restaurant_btn">
                             Vai al ristorante
                         </button>
                         </router-link>
                             </div>
                         </div>
+                        <!-- END RESTAURANT CARD -->
                     </div>
                 </div>
-                <div class="d-flex flex-wrap" v-else-if="filteredRestaurants.length <= 0 && checkbox.length <= 0">
+                <div class="d-flex justify-content-center flex-wrap" v-else-if="filteredRestaurants.length <= 0 && checkbox.length <= 0">
                     <div v-for="restaurant in restaurants" :key="restaurant.id" >
-                        <div class="card mx-3 my-3" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
-                                <p class="card-text">Testo di prova</p>
+                        <!-- RESTAURANT CARD -->
+                        <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;">
+                            <div class="card-body text-center">
+                                <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
+                                <!-- <p class="card-text">Testo di prova</p> -->
+                                <div class="decoration"></div>
                                 <router-link :to="{
                             name: 'restaurant.details',
                             params: { slug: restaurant.slug }
                         }">
-                        <button class="btn btn-primary">
+                        <button class="btn restaurant_btn">
                             Vai al ristorante
                         </button>
                         </router-link>
                             </div>
                         </div>
+                        <!-- END RESTAURANT CARD -->
                     </div>
                 </div>
-                <div class="d-flex flex-wrap" v-else>
+                <div class="d-flex justify-content-center flex-wrap" v-else>
                     <div v-for="restaurant in restaurants" :key="restaurant.id" >
                         <div v-for="category in restaurant.category" :key="category.id">
                             <div v-if="checkbox.includes(category.name)">
-                                
-                                <div class="card mx-3 my-3" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
-                                        <p class="card-text">Testo di prova</p>
+                                <!-- SINGLE RESTAURANT CARD -->
+                                <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;">
+                                    <div class="card-body text-center">
+                                        <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                        <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
+                                        <!-- <p class="card-text">Testo di prova</p> -->
+                                        <div class="decoration"></div>
                                         <router-link :to="{
                                     name: 'restaurant.details',
                                     params: { slug: restaurant.slug }
                                 }">
-                                <button class="btn btn-primary">
+                                <button class="btn restaurant_btn">
                                     Vai al ristorante
                                 </button>
                                 </router-link>
                                     </div>
                                 </div>
+                                <!-- END SINGLE RESTAURANT CARD -->
                             </div>
                         </div>
                     </div>
@@ -133,6 +149,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/app.scss';
+
 
 .restaurant {
     // BACKGROUND COLOR
@@ -200,6 +217,14 @@ export default {
         .restaurant-wrapper {
             display: flex;
             flex-wrap: wrap;
+            padding-top:60px;
+
+            .card-img-top{
+                width: 246px;
+                object-fit: cover;
+                
+            }
+           
         }
     }
 }

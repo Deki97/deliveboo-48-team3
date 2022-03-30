@@ -18,8 +18,12 @@
 
                 <!-- Buttons Register/Login -->
                 <div class="buttons d-none d-lg-block">
-                    <button type="button" class="btn btn-warning">Accedi<span class="button-icon"><i class="fa-solid fa-right-to-bracket"></i></span></button>
-                    <button type="button" class="btn btn-warning">Registrati<span class="button-icon"><i class="fa-solid fa-house"></i></span></button>
+                    <button type="button" class="btn btn-warning">
+                        <a href="http://127.0.0.1:8000/login">Accedi<span class="button-icon"><i class="fa-solid fa-right-to-bracket"></i></span></a>
+                    </button>
+                    <button type="button" class="btn btn-warning">
+                        <a href="http://127.0.0.1:8000/register">Registrati<span class="button-icon"><i class="fa-solid fa-house"></i></span></a>
+                    </button>
                 </div>
 
                 <!-- Burger Menu -->
@@ -213,6 +217,13 @@ header {
                     color: #7c2a02;
                     transition: 0.2s;
                     border-radius: 20px;
+                    a{
+                        color:inherit;
+                        &:hover{
+                            color:inherit;
+                            text-decoration: none;
+                        }
+                    }
 
                     .button-icon {
                         margin-left: 5px;
