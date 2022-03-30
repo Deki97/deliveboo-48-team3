@@ -2,41 +2,57 @@
 
 namespace App\Http\Controllers\Api;
 
-use Braintree\Gateway;
-use App\Http\Requests\Payment\PaymentRequest;
-use App\Dish;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Payment\PaymentRequest;
+// use App\Mail\OrderConfirmationEmail;
 use Illuminate\Http\Request;
+use Braintree\Gateway;
+use App\Order;
+// use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
-    public function generate(Gateway $gateway) {
+    public function generate(Gateway $gateway)
+    {
+        // dd($gateway);
         $token = $gateway->clientToken()->generate();
-        $data = [
-            "token" => $token
-        ];
-        return response()->json($data);
+        // dd($clientToken);
+        return response()->json([
+            'token' => $token,
+            'message' => 'Success'
+        ], 200);
     }
-    public function makePayment(PaymentRequest $request, Gateway $gateway) {
-        $dish = Dish::find($request->dish);
+
+    public function makepayment(PaymentRequest $request, Gateway $gateway)
+    {
+        $order = Order::find($request->id);
+
         $result = $gateway->transaction()->sale([
-            'amount' => $dish->price,
+            'amount' => $order->amount,
             'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => true
             ]
         ]);
+        if ($result->success) {
+            $order->status=1;
+            $order->save();
+            $data = [
+                'email' => $order->email,
+                'amount' => $order->amount,
+                'order_number' => $order->id,
+                'success' => true,
+                'message' => 'Transazione avvenuta con successo'
+            ];
 
-        if($result->success) {
+            // Mail::to($order->customer_email,'customer@email.com')->send(new OrderConfirmationEmail($order));
+            return response()->json(compact('data'), 200);
+        } else {
             $data = [
-                "message" => 'Transazione eseguita con successo.'
+                'success' => false,
+                'message' => 'Transazione Fallita'
             ];
-            return response()->json($data,200);
-        }else {
-            $data = [
-                "message" => 'Transazione fallita!'
-            ];
-            return response()->json($data,401);
+            return response()->json(compact('data'), 401);
         }
     }
 }

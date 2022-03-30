@@ -1,9 +1,6 @@
 <template>
   <div>
-    <!-- <HeaderRestaurant />
-    <Jambotron :restaurant="restaurant" /> -->
     <div class="container-fluid px-md-5">
-      <!-- <Loader v-if="isLoading" /> -->
       <div>
         <div v-if="!isCheckout" class="container-fluid">
           <div class="row w-100">
@@ -15,7 +12,6 @@
                 flex-wrap
               "
             >
-            
               <div
                 class="
                   card
@@ -29,7 +25,6 @@
                 v-for="(dish, index) in dishes"
                 :key="dish.id + index"
               >
-              <!-- {{console.log(dish)}} -->
                 <div
                   class="pro-pic"
                   v-bind:style="{
@@ -49,23 +44,23 @@
                         flex-wrap
                       "
                     >
-                      <!-- <a
+                      <a
                         class="
                           btn btn-danger
                           quantity-btn quantity-btn-negative
                         "
                         v-if="dish.quantity && shoppingCart.length > 0"
                         @click="removePlateToCart(dish, index)"
-                      > -->
+                      >
                         -
-                      <!-- </a>
+                      </a>
                       <span v-else class="px-4 px-lg-3 replacer">.</span>
                       <p
                         class="plate-quantity"
                         v-if="shoppingCart.length === 0"
-                      > -->
+                      >
                         0
-                      <!-- </p>
+                      </p>
                       <p v-else class="plate-quantity">{{ dish.quantity }}</p>
                       <a
                         class="
@@ -74,7 +69,7 @@
                         "
                         @click="addPlateToCart(dish)"
                         >+</a
-                      > -->
+                      >
                     </div>
                     <p class="plate-price">{{ dish.price }} €</p>
                   </div>
@@ -110,10 +105,10 @@
                     "
                   >
                     <div class="mw-100">
-                      <!-- <ModalCart
+                      <ModalCart
                         :shoppingCart="shoppingCart"
                         :totalPrice="totalPrice"
-                      /> -->
+                      />
                       <div class="d-flex justify-content-between">
                         <a
                           class="btn btn-success mt-3 mr-1"
@@ -136,31 +131,25 @@
           </div>
         </div>
         <div>
-          <!-- <Checkout
+          <Checkout
             v-if="isCheckout"
             :shoppingCart="shoppingCart"
             :totalPrice="totalPrice"
             :restaurant="restaurant"
-          /> -->
+          />
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-// import ModalCart from "./ModalCart.vue";
-// import Checkout from "./Checkout.vue";
-// import Loader from "./Loader.vue";
-// import HeaderRestaurant from "./HeaderRestaurant.vue";
-// import Jambotron from "./Jambotron.vue";
+import ModalCart from "../components/ModalCart.vue";
+import Checkout from "../components/Checkout.vue";
 export default {
-  name: "RestaurantDetail",
+  name: "Cart",
   components: {
-    // ModalCart,
-    // Checkout,
-    // Loader,
-    // HeaderRestaurant,
-    // Jambotron,
+    ModalCart,
+    Checkout,
   },
   data() {
     return {
@@ -169,11 +158,12 @@ export default {
       prevRestaurant: [],
       dishes: [],
       shoppingCart: [],
-      // showModal: false,
       isCheckout: false,
       isLoading: false,
       totalPrice: 0,
       imgURL: "../storage/",
+      test: [],
+      sum: 0
     };
   },
   methods: {
@@ -183,39 +173,33 @@ export default {
         .get('/api/restaurants/' + this.$route.params.slug)
         .then((res) => {
           this.restaurant = res.data.restaurant;
-          console.log(this.restaurant);
           this.dishes = res.data.dishes;
-        //   if (this.prevRestaurant.id !== this.restaurant.id) {
-        //     this.clearLocalStorage();
-        //   }
-        // })
-        // .catch((err) => {
-        //   console.error(err);
-        // })
-        // .then(() => {
-        //   this.isLoading = false;
-        // 
+          this.dishes.forEach(dish => {
+            dish.price = parseFloat(dish.price);
+          });
         });
     },
     addPlateToCart(dish) {
       if (!this.shoppingCart.includes(dish)) {
         this.shoppingCart.push(dish);
         dish.quantity = 1;
-        this.totalPrice += dish.price;
+        this.totalPrice = this.totalPrice + dish.price;
+        
       } else {
         dish.quantity++;
-        this.totalPrice += dish.price;
+        this.totalPrice = this.totalPrice + dish.price;
       }
-      // this.showModal = true;
       this.saveCartInLocalStorage();
     },
-    removePlateToCart(dish) {
+    removePlateToCart(dish, index) {
+      dish.quantity--;
       if (this.shoppingCart.includes(dish) && dish.quantity > 0) {
-        dish.quantity--;
         this.totalPrice = this.totalPrice - dish.price;
-      } else if (dish.quantity == 0) {
+      } else {
+         this.shoppingCart.splice(this.shoppingCart.indexOf(dish), 1);
         this.totalPrice = this.totalPrice - dish.price;
       }
+      this.saveCartInLocalStorage();
     },
     // LOCAL STORAGE
     saveCartInLocalStorage() {
@@ -234,23 +218,19 @@ export default {
       localStorage.setItem("amount", JSON.stringify(this.totalPrice));
     },
     showCheckoutComp() {
-    //   if (this.shoppingCart.length > 0) {
-    //     this.isCheckout = true;
-    //   }
+      if (this.shoppingCart.length > 0) {
+        this.isCheckout = true;
+      }
     },
   },
   created() {
     let url = window.location.href;
     url = new URL(url);
-    let dinamicParam = url.pathname;
-    this.getRestaurantAndPlatesFromApi(dinamicParam);
+    this.getRestaurantAndPlatesFromApi();
     this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
       this.totalPrice = JSON.parse(localStorage.getItem("amount"));
-      /*  if (this.shoppingCart.length > 0) {
-        this.showModal = true;
-      } */
     }
   },
 };
