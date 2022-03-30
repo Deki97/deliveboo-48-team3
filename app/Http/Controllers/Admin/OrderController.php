@@ -4,29 +4,62 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-use App\Dish;
 use App\Order;
-
+use App\Dish;
+use App\Restaurant;
 use Illuminate\Support\Facades\Auth;
+
+
 class OrderController extends Controller
 {
-    public function index(){
+    public function index()
+    {
+        // restaurant validation
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
 
+        $orders =  Dish::where('restaurant_id', $restaurant->id)->with('orders')->get()->pluck('orders')->flatten()->sortDesc();
+        // $orders = $orders->paginate(6);
 
-
-        $user = Auth::user();
-        $orders = Order::where('user_id', $user->id)->orderByDesc('created_at')->get();
-        
-       
-        return view('admin.orders.index', compact('orders'));
+        return view('admin.orders.index', compact('orders', 'restaurant'));
     }
 
-    public function show($id){
 
+    public function show($id)
+    {
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
         $order = Order::findOrFail($id);
-        $order->status = Order::checkStatus($order->status);
-        return view('admin.orders.show',compact('order'));
+        $plates = $order->plates;
+        // dd($plates);
+        foreach ($plates as $plate) {
+            $plate->quantity = $plate->pivot->quantity;
+            // dd($plate->quantity);
+        }
+
+        // dd($plates);
+
+
+
+        return view('admin.orders.show', compact('order', 'restaurant', 'plates'));
     }
-    
+
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        return redirect()->route('admin.orders.index')->with('alert-type', 'success')->with('alert-msg', "Ordine n° $order->id eliminato con successo");
+    }
+
+
+    public function trash()
+    {
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
+        $orders = Order::onlyTrashed()->get();
+        return view('admin.orders.trash', compact('orders', 'restaurant'));
+    }
+
+    public function restore($id)
+    {
+        $order = Order::withTrashed()->find($id);
+        $order->restore();
+        return redirect()->route('admin.orders.index')->with('alert-type', 'success')->with('alert-msg', "Ordine n° $order->id ripristinato con successo");
+    }
 }
