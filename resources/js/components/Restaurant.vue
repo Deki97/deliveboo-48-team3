@@ -133,6 +133,8 @@ export default {
 @import '../../sass/app.scss';
 
 .restaurant {
+    background-color: #7c2a02;
+
     .container {
         .searchbar-container {
             max-width: 400px;
