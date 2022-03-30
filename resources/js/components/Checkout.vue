@@ -59,12 +59,7 @@
             <button class="btn btn-primary" type="submit" @click="createOrder">
               Crea Ordine
             </button>
-            <a
-              @click="clearLocalStorage"
-              class="btn btn-danger"
-              :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
-              >Cancella ordine</a
-            >
+             <router-link class="btn btn-danger" :to="{ name : 'home'}">cancella</router-link>
           </div>
         </div>
         <div class="form col-xl-10 col-lg-9 col-md-8 col-sm-7 ml-5">

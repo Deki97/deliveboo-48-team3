@@ -176,7 +176,11 @@ export default {
           this.dishes = res.data.dishes;
           this.dishes.forEach(dish => {
             dish.price = parseFloat(dish.price);
-          });
+          })
+          if(this.prevRestaurant.restaurant_name !== this.restaurant.restaurant_name) {
+          this.clearLocalStorage();
+          console.log(localStorage);
+        }
         });
     },
     addPlateToCart(dish) {
@@ -231,6 +235,8 @@ export default {
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
       this.totalPrice = JSON.parse(localStorage.getItem("amount"));
+    }
+    if (this.prevRestaurant.restaurant_name !== this.restaurant.restaurant_name) {
     }
   },
 };
