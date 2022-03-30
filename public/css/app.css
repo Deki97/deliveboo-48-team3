@@ -11168,6 +11168,11 @@ img {
   max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 header a {
   color: white;
 }
@@ -11180,5 +11185,60 @@ header a {
 li {
   padding: 0;
   margin: 0;
+}
+
+.page_titles {
+  text-transform: uppercase;
+  color: #E25822;
+  padding-top: 50px;
+}
+
+@media (max-width: 1090px) {
+  .page_titles {
+    padding-top: 190px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .page_titles {
+    padding-top: 270px;
+  }
+}
+
+.restaurant_cards {
+  box-shadow: 4px 4px 25px #7c2a02;
+  border-radius: 20px;
+  background-color: #f6ca62;
+}
+
+.restaurant_cards h5 {
+  color: #b22222;
+  text-transform: capitalize;
+}
+
+.restaurant_cards p {
+  color: #E25822;
+}
+
+.restaurant_cards .decoration {
+  width: 100%;
+  margin: 50px 0;
+  height: 2px;
+  background-color: black;
+}
+
+.restaurant_cards:hover {
+  box-shadow: 10px 10px 15px #7c2a02;
+  transform: scale(1.1);
+}
+
+.restaurant_btn {
+  margin: 50px 2px 0;
+  padding: 5px 15px;
+  background-color: #e46d1f;
+  color: #7c2a02;
+  transition: 0.2s;
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px;
 }
 

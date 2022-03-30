@@ -84,7 +84,7 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 80px 0;
+    padding: 50px 0;
     position: relative;
     // box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
 
