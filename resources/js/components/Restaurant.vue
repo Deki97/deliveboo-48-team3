@@ -1,6 +1,7 @@
 <template>
     <div class="restaurant">
         <div class="container">
+            <!-- SEARCHBAR -->
             <div class="searchbar-container animate__animated animate__fadeInUp animate_delay-5s">
                 <h6>Cerca per ristorante o categoria</h6>
                 <div class="input-group rounded">
@@ -12,6 +13,7 @@
                     <label>{{category.name}}</label>
                 </div>
             </div>
+            <!-- END SEARCHBAR -->
             <h2>I nostri ristoranti</h2>
             <div class="restaurant-wrapper ">
                 <div class="d-flex flex-wrap" v-if="filteredRestaurants.length > 0" >
@@ -133,15 +135,51 @@ export default {
 @import '../../sass/app.scss';
 
 .restaurant {
-    background-color: #7c2a02;
+    // BACKGROUND COLOR
+        position:relative;
+         
+        background: linear-gradient(67deg, #7c2a02, #121c19, #f3ba32);
+        background-size: 600% 600%;
+
+        -webkit-animation: AnimationName 23s ease infinite;
+        -moz-animation: AnimationName 23s ease infinite;
+        animation: AnimationName 23s ease infinite;
+    
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:51% 0%}
+        50%{background-position:50% 100%}
+        100%{background-position:51% 0%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:51% 0%}
+        50%{background-position:50% 100%}
+        100%{background-position:51% 0%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:51% 0%}
+        50%{background-position:50% 100%}
+        100%{background-position:51% 0%}
+    }
+    // BACKGROUND COLOR
 
     .container {
         .searchbar-container {
             max-width: 400px;
             padding: 20px 20px 40px 20px;
             border-radius: 10px;
-            margin-top: 30px;
+            // margin-top: 30px;
             background-color: darken(#fec866, 20%);
+            position:absolute;
+            top:-134px;
+            left: 109px;
+           @media (max-width: 1050px) { 
+               top:-60px;
+            }
+            @media (max-width: 992px) { 
+               top:-35px;
+            }
+
 
             h6 {
                 color: #7c2a02;
