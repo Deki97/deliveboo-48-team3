@@ -37341,12 +37341,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __webpack_require__(/*! /Users/user/laravel/deliveboo-48-team3/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /Users/user/laravel/deliveboo-48-team3/resources/sass/app.scss */"./resources/sass/app.scss");
 =======
 __webpack_require__(/*! C:\MAMP\htdocs\laravel-projects\deliveboo-48-team3\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\MAMP\htdocs\laravel-projects\deliveboo-48-team3\resources\sass\app.scss */"./resources/sass/app.scss");
 >>>>>>> add-mail
+=======
+__webpack_require__(/*! C:\Users\dejan\classe-48\deliveboo-48-team3\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\dejan\classe-48\deliveboo-48-team3\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> added-header-fixed
 
 
 /***/ })

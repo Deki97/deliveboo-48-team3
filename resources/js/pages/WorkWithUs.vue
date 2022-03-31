@@ -86,6 +86,7 @@ export default {
 
 .work {
     background-color: #000103;
+    margin-top: 120px;
     padding: 50px 0;
 
     .container {
