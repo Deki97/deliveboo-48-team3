@@ -243,11 +243,13 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 @import "../../sass/app.scss";
 body {
   margin: 0 !important;
 }
+
 .card {
   margin-top: 100px;
   height: 500px;
@@ -305,15 +307,11 @@ body {
   border-radius: 50%;
   border: 3px solid #7c2a02;
 }
-.card:hover .pro-pic {
-  
-}
+
 .card:hover {
   cursor: pointer;
 }
-.card:hover .description {
-  
-}
+
 .cart-modal-container {
   width: 100%;
 }

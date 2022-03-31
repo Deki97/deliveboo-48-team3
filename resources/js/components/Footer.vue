@@ -160,31 +160,31 @@ footer{
     color:$page_other_color;
     
         .footer_wrapper{
-        width:100%;
-        padding-top: 60px;
-        background: rgb(0,1,3);
-        background: linear-gradient(0deg, rgba(0,1,3,1) 95%, rgba(243,129,50,1) 98%, rgba(124,9,2,1) 100%);
+            width:100%;
+            padding-top: 60px;
+            // background: rgb(0,1,3);
+            // background: linear-gradient(0deg, rgba(0,1,3,1) 95%, rgba(243,129,50,1) 98%, rgba(124,9,2,1) 100%);
     
 
-        .footer_col{
+        .footer_col {
             width: 250px;
             height: 100%;
             background-color: #3c3a1e;
             border:1px solid $page_other_color;
             border-radius: 10px;
-            ul{
+            ul {
                 margin-left: -30px;
-                li{
+                li {
                         margin:7px 0;
                     }
-                 .card-icons{
+                 .card-icons {
                     margin-right: 15px;
                     
                 }
             }
         }
         // footer bottom
-        .footer_bottom{
+        .footer_bottom {
             width: 100%;
             border-top:1px solid $page_secondary_color;
             margin-top: 50px;
