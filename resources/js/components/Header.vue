@@ -104,15 +104,18 @@ export default {
 
 header {
     background-color: #000103;
-    // color: black;
     padding: 20px;
     font-size: 20px;
-    // text-transform: uppercase;
     width: 100%;
+    border-bottom: 1px solid $page_secondary_color;
+    position: fixed;
+    top: 0;
+    height: 120px;
+    z-index: 1000;
     
     nav {
         width: 100%;
-
+        
         .bm-burger-button {
         position: fixed;
         width: 40px;
