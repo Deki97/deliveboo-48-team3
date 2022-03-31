@@ -29,13 +29,12 @@ class OrderController extends Controller
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
         $order = Order::findOrFail($id);
         $dishes = $order->dishes;
-        foreach ($dishes as $dishes) {
-            $dishes->quantity = $dishes->pivot->quantity;
-        // dd($plates);
-        foreach ($dishes as $dish) {
-            $dishes->quantity = $dish->pivot->quantity;
-            // dd($plate->quantity);
-        }
+    
+            foreach ($dishes as $dish) {
+                $dishes->quantity = $dish->pivot->quantity;
+                // dd($plate->quantity);
+            }
+        
 
 
 
@@ -48,7 +47,6 @@ class OrderController extends Controller
         $order->delete();
         return redirect()->route('admin.orders.index')->with('alert-type', 'success')->with('alert-msg', "Ordine n° $order->id eliminato con successo");
     }
-
 
     public function trash()
     {
