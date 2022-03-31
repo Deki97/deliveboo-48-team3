@@ -17,7 +17,7 @@ class OrderController extends Controller
         // restaurant validation
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
 
-        $orders =  Dish::where('restaurant_id', $restaurant->id)->with('orders')->get()->pluck('orders')->flatten()->sortDesc();
+        $orders =  Dish::where('restaurant_id', $restaurant->id)->with('orders')->get()->pluck('orders')->first();
         // $orders = $orders->paginate(6);
 
         return view('admin.orders.index', compact('orders', 'restaurant'));
@@ -28,18 +28,15 @@ class OrderController extends Controller
     {
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
         $order = Order::findOrFail($id);
-        $plates = $order->plates;
-        // dd($plates);
-        foreach ($plates as $plate) {
-            $plate->quantity = $plate->pivot->quantity;
-            // dd($plate->quantity);
+        $dishes = $order->dishes;
+        foreach ($dishes as $dishes) {
+            $dishes->quantity = $dishes->pivot->quantity;
         }
 
-        // dd($plates);
 
 
 
-        return view('admin.orders.show', compact('order', 'restaurant', 'plates'));
+        return view('admin.orders.show', compact('order', 'restaurant', 'dishes'));
     }
 
     public function destroy(Order $order)

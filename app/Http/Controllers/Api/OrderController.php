@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
@@ -26,7 +29,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
+        // dd($restaurant);
+        // dd($request);
         $data = $request->all();
         $order = new Order();
         $order->name = $data['name'];
@@ -35,6 +40,8 @@ class OrderController extends Controller
         $order->email = $data['email'];
         $order->amount = $data['amount'];
         $order->status = 0;
+        // $order->user_id = $restaurant->restaurant_id;
+        // dd($order->user_id);
         $order->save();
 
         foreach ($data['order_details'] as $key => $detail) {

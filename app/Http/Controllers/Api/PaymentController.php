@@ -14,9 +14,7 @@ class PaymentController extends Controller
 {
     public function generate(Gateway $gateway)
     {
-        // dd($gateway);
         $token = $gateway->clientToken()->generate();
-        // dd($clientToken);
         return response()->json([
             'token' => $token,
             'message' => 'Success'

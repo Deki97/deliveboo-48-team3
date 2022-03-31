@@ -1,29 +1,63 @@
 @extends('layouts.dashboard')
 
-
 @section('content')
-<h1>Ordini</h1>
+    <section id="orders" class="container">
+        <h1 class="text-success mt-3 font-weight-bold text-center mb-2">I Tuoi Ordini</h1>
 
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">Cognome</th>
-        <th scope="col">Indirizzo</th>
-        <th scope="col">Prezzo Totale</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach ($orders as $key=>$order)
-          <tr>
-            <td>{{$order['name']}}</td>
-            <td>{{$order['lastname']}}</td>
-            <td>{{$order['address']}}</td>
-            <td>{{str_replace(".",",",number_format($order['tot_price'], 2))}}€</td>
-            <td><a href="{{route('admin.details', ['id' => $order->id])}}">Dettagli</a></td>
-          </tr>
-        @endforeach
-    </tbody>
-  </table>
+      <div class="box mt-5">
+
+        @if(session('alert-msg'))
+
+        <div class="alert alert-{{session('alert-type')}}" role="alert">
+            {{ session('alert-msg') }}
+          </div>
+
+        @endif
+
+
+        @if(!$restaurant)
+        @include('includes.alert_restaurant')
+        @else  
+
+
+        <table class="table">
+            <thead>
+              <tr class="bg-secondary text-white">
+                <th scope="col">#</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Paid</th>
+                <th scope="col">Customer Address</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach ($orders as $order)  
+                <tr class="font-weight-bold bg-white">
+                    <td>{{ $order->id }}</td>
+                    <td>{{ $order->created_at }}</td>
+                    <td> € {{ $order->amount }}</td>
+                    <td>
+                        @if($order->status)
+                        <span class="badge badge-pill badge-success">Pagato</span>
+                        @else
+                        <span class="badge badge-pill badge-danger">Da pagare</span>
+                        @endif
+                    </td>
+                    <td>{{ $order->address }}</td>
+
+                    <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Vedi</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+          </table>
+          <tfoot>
+            
+          </tfoot>
+      </div>
+      {{-- <div class="mt-5  text-center">
+              <a href="{{ route('admin.orders.statistics.index') }}" class="btn btn-success">Statistiche</a>           
+            </div> --}}
+    </section>
+    @endif
 @endsection

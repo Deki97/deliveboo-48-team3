@@ -13,4 +13,6 @@ class DishOrder extends Model
     public function orders(){
         return $this->belongsTo('App\Order');
     }
+
+    protected $table="dish_order";
 }
