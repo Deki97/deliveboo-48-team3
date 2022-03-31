@@ -46,8 +46,8 @@ class PaymentController extends Controller
 
             ];
 
-            // Mail::to($order->email)->send(new NewOrderNotification($order));
-            // Mail::to('admin@email.com')->send(new NewOrderNotification($order));
+            Mail::to($order->email,'Admin@email.com')->send(new NewOrderNotification($order));
+            Mail::to('admin@email.com')->send(new NewOrderNotification($order));
             return response()->json(compact('data'), 200);
         } else {
             $data = [

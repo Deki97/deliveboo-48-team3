@@ -80003,11 +80003,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\laravel-projects\deliveboo-48-team3\resources\js\test.js */"./resources/js/test.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\dejan\classe-48\deliveboo-48-team3\resources\js\test.js */"./resources/js/test.js");
->>>>>>> added-header-fixed
+module.exports = __webpack_require__(/*! C:\Users\scara\Repository\laravel-projects\deliveboo-48-team3\resources\js\test.js */"./resources/js/test.js");
 
 
 /***/ })

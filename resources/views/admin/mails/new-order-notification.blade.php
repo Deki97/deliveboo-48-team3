@@ -7,15 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>
-        Ordine eseguito con successo!
-    </h1>
-    <h2>
-        Riepilogo ordine
-    </h2>
-    <ul>
-        <li>{{$order->name}}</li>
-        <li>{{$dish->name}}</li>
-    </ul>
+    <div class="container">
+        <!-- Logo -->
+        <div>
+            <h2>Deliveboo</h2>
+        </div>
+        
+    <div class="card">
+        <div class="card-header">
+            <h4>Conferma ordine</h4>
+        </div>
+        <div class="card-text">
+            <p>Ordine avvenuto con successo: </p>
+            <p> il numero ordine: {{ $order->id}}</p>
+            <p> Cliente:   {{$order->name}}  {{$order->lastname}} </p>
+            <p> email:  {{$order->email}}</p>
+            <p> Totale ordine : {{$order->amount}} €</p>
+        </div>
+    </div>
+    </div>
 </body>
 </html>
