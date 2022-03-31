@@ -9,7 +9,7 @@
                             <h5 class="mb-4 text-center">{{firstSection.title}}</h5>
                             <ul>
                                 <li v-for="(link,index) in firstSection.links" :key="index">
-                                    <span class="card-icons"><i class="fas fa-chevron-right"></i></span>
+                                    <span class="card-icons"><i class="fas fa-pizza-slice"></i></span>
                                     <a :href="link.href" target="_blank">{{link.name}}</a>
                                 </li>
                             </ul>
@@ -22,7 +22,7 @@
                             <h5 class=" text-center mb-4">{{secondSection.title}}</h5>
                             <ul>
                                 <li v-for="(link,index) in secondSection.links" :key="index" >
-                                    <span class="card-icons"><i class="fas fa-chevron-right"></i></span>
+                                    <span class="card-icons"><i class="fas fa-pizza-slice"></i></span>
                                     <a :href="link.href" target="_blank">{{link.name}}</a>
                                 </li>
                             </ul>
@@ -35,7 +35,7 @@
                             <h5 class=" text-center mb-4">{{thirdSection.title}}</h5>
                             <ul>
                                 <li v-for="(link,index) in thirdSection.links" :key="index">
-                                    <span class="card-icons"><i class="fas fa-chevron-right"></i></span>
+                                    <span class="card-icons"><i class="fas fa-pizza-slice"></i></span>
                                     <a :href="link.href" target="_blank">{{link.name}}</a>
                                 </li>
                             </ul>
