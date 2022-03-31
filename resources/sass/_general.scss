@@ -16,6 +16,7 @@ body {
     font-family: "Titillium Web", sans-serif;
 }
 
+
 img{
     max-width:100%;
 }
@@ -27,6 +28,16 @@ a{
 header a {
     color: white;
 }
+
+footer ul {
+    list-style-type: none;
+}
+footer a:hover{
+    color:$page_secondary_color;
+   
+}
+
+
 
 .container-ms {
     width: 90%;

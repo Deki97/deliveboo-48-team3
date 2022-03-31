@@ -11177,6 +11177,14 @@ header a {
   color: white;
 }
 
+footer ul {
+  list-style-type: none;
+}
+
+footer a:hover {
+  color: #f3ba32;
+}
+
 .container-ms {
   width: 90%;
   margin: auto;
