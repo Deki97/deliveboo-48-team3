@@ -163,7 +163,7 @@ footer{
         width:100%;
         padding-top: 60px;
         background: rgb(0,1,3);
-        background: linear-gradient(0deg, rgba(0,1,3,1) 92%, rgba(243,129,50,1) 97%, rgba(124,9,2,1) 100%);
+        background: linear-gradient(0deg, rgba(0,1,3,1) 95%, rgba(243,129,50,1) 98%, rgba(124,9,2,1) 100%);
     
 
         .footer_col{
