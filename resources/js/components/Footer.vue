@@ -200,6 +200,7 @@ footer{
                 }
                 .icon:hover{
                     transform:scale(1.3);
+                    transition-delay: 0.5s;
                 }
             }
         }
