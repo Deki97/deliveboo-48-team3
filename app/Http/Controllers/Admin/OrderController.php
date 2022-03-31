@@ -28,10 +28,10 @@ class OrderController extends Controller
     {
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
         $order = Order::findOrFail($id);
-        $plates = $order->plates;
+        $dishes = $order->dishes;
         // dd($plates);
-        foreach ($plates as $plate) {
-            $plate->quantity = $plate->pivot->quantity;
+        foreach ($dishes as $dish) {
+            $dishes->quantity = $dish->pivot->quantity;
             // dd($plate->quantity);
         }
 
@@ -39,7 +39,7 @@ class OrderController extends Controller
 
 
 
-        return view('admin.orders.show', compact('order', 'restaurant', 'plates'));
+        return view('admin.orders.show', compact('order', 'restaurant', 'dishes'));
     }
 
     public function destroy(Order $order)

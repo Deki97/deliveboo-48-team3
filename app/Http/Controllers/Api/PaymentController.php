@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\PaymentRequest;
-// use App\Mail\OrderConfirmationEmail;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
 use App\Order;
-// use Illuminate\Support\Facades\Mail;
+use App\Dish;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewOrderNotification;
 
 class PaymentController extends Controller
 {
@@ -26,7 +27,8 @@ class PaymentController extends Controller
     public function makepayment(PaymentRequest $request, Gateway $gateway)
     {
         $order = Order::find($request->id);
-
+        
+        
         $result = $gateway->transaction()->sale([
             'amount' => $order->amount,
             'paymentMethodNonce' => $request->token,
@@ -43,9 +45,11 @@ class PaymentController extends Controller
                 'order_number' => $order->id,
                 'success' => true,
                 'message' => 'Transazione avvenuta con successo'
+
             ];
 
-            // Mail::to($order->customer_email,'customer@email.com')->send(new OrderConfirmationEmail($order));
+            // Mail::to($order->email)->send(new NewOrderNotification($order));
+            // Mail::to('admin@email.com')->send(new NewOrderNotification($order));
             return response()->json(compact('data'), 200);
         } else {
             $data = [
