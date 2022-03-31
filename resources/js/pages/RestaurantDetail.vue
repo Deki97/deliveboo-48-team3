@@ -1,5 +1,6 @@
 <template>
   <div>
+    <HeaderRestaurant />
     <div class="container-fluid px-md-5">
       <div>
         <div v-if="!isCheckout" class="container-fluid">
@@ -145,11 +146,13 @@
 <script>
 import ModalCart from "../components/ModalCart.vue";
 import Checkout from "../components/Checkout.vue";
+import HeaderRestaurant from "../components/HeaderRestaurant.vue";
 export default {
   name: "Cart",
   components: {
     ModalCart,
     Checkout,
+    HeaderRestaurant
   },
   data() {
     return {
@@ -167,16 +170,20 @@ export default {
     };
   },
   methods: {
-    getRestaurantAndPlatesFromApi() {
+    getRestaurantAndPlatesFromApi(dinamicParam) {
       this.isLoading = true;
       axios
-        .get('/api/restaurants/' + this.$route.params.slug)
+        .get(`${this.baseUri}${dinamicParam}`)
         .then((res) => {
           this.restaurant = res.data.restaurant;
           this.dishes = res.data.dishes;
           this.dishes.forEach(dish => {
             dish.price = parseFloat(dish.price);
           });
+          if(this.prevRestaurant.restaurant_name !== this.restaurant.restaurant_name) {
+            this.clearLocalStorage();
+            console.log(localStorage);
+          }
         });
     },
     addPlateToCart(dish) {
@@ -226,7 +233,8 @@ export default {
   created() {
     let url = window.location.href;
     url = new URL(url);
-    this.getRestaurantAndPlatesFromApi();
+    let dinamicParam = url.pathname;
+    this.getRestaurantAndPlatesFromApi(dinamicParam);
     this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
