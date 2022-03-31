@@ -17,7 +17,7 @@
                             erase-style='backspace'
                             :erase-on-complete='false'
                             caret-animation='blink'
-                        ></vue-typer> ,<br>
+                        ></vue-typer>,<br>
                     <span class="ovunque">ovunque ti trovi</span>.</h1>
 
                     <p>Scegli tra un'ampia varietà di piatti e ristoranti,<br>
@@ -84,7 +84,7 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 50px 0;
+    padding: 80px 0;
     position: relative;
     // box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
 

@@ -61,25 +61,24 @@ li {
     }
 }
 
-.restaurant_cards{
 
-box-shadow: 4px 4px 25px $page_tertiary_color;
-border-radius: 20px;
-background-color: lighten( $page_secondary_color, 10%);
-    h5{
-        color:$page_primary_color;
-        text-transform: capitalize;
-    }
-    p{
-        color: $page_other_color;
-    }
-    .decoration{
-        width: 100%;
-        margin: 50px 0;
-        height: 2px;
-        background-color: black;
-    }
-}
+// box-shadow: 4px 4px 25px $page_tertiary_color;
+// border-radius: 20px;
+// background-color: lighten( $page_secondary_color, 10%);
+//     h5{
+//         color:$page_primary_color;
+//         text-transform: capitalize;
+//     }
+//     p{
+//         color: $page_other_color;
+//     }
+//     .decoration{
+//         width: 100%;
+//         margin: 50px 0;
+//         height: 2px;
+//         background-color: black;
+//     }
+// }
 .restaurant_cards:hover{
     box-shadow: 10px 10px 15px $page_tertiary_color;
     transform: scale(1.1);
