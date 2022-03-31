@@ -18,6 +18,10 @@ import router from './router.js';
 // Import Animate.css
 import 'animate.css';
 
+// Import Animation On Scroll Library
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 
 
 
@@ -34,5 +38,8 @@ import '@fortawesome/fontawesome-free/js/all.js';
 const app = new Vue({
     el: '#root',
     render: h => h(App),
+    mounted() {
+        AOS.init()
+    },
     router
 });

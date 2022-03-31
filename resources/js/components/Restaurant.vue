@@ -24,9 +24,11 @@
                 <div class="d-flex justify-content-center flex-wrap" v-if="filteredRestaurants.length > 0" >
                     <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" >
                         <!-- RESTAURANT CARD -->
-                        <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;">
-                            <div class="card-body text-center">
+                        <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
+                            <div class="card-body text-center p-0">
                                 <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                <!-- <img src="../../assets/img/prova-restaurant.png" alt=""> -->
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 600"><path fill="#0099ff" fill-opacity="1" d="M0,0L48,21.3C96,43,192,85,288,138.7C384,192,480,256,576,282.7C672,309,768,299,864,256C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
                                 <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
                                 <!-- <p class="card-text">Testo di prova</p> -->
                                 <div class="decoration"></div>
@@ -46,9 +48,11 @@
                 <div class="d-flex justify-content-center flex-wrap" v-else-if="filteredRestaurants.length <= 0 && checkbox.length <= 0">
                     <div v-for="restaurant in restaurants" :key="restaurant.id" >
                         <!-- RESTAURANT CARD -->
-                        <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;">
-                            <div class="card-body text-center">
+                        <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
+                            <div class="card-body text-center p-0">
                                 <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                <!-- <img src="../../assets/img/prova-restaurant.png" alt=""> -->
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 600"><path fill="#0099ff" fill-opacity="1" d="M0,0L48,21.3C96,43,192,85,288,138.7C384,192,480,256,576,282.7C672,309,768,299,864,256C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
                                 <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
                                 <!-- <p class="card-text">Testo di prova</p> -->
                                 <div class="decoration"></div>
@@ -70,9 +74,11 @@
                         <div v-for="category in restaurant.category" :key="category.id">
                             <div v-if="checkbox.includes(category.name)">
                                 <!-- SINGLE RESTAURANT CARD -->
-                                <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;">
-                                    <div class="card-body text-center">
+                                <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
+                                    <div class="card-body text-center p-0">
                                         <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                <!-- <img src="../../assets/img/prova-restaurant.png" alt=""> -->
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 600"><path fill="#0099ff" fill-opacity="1" d="M0,0L48,21.3C96,43,192,85,288,138.7C384,192,480,256,576,282.7C672,309,768,299,864,256C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
                                         <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
                                         <!-- <p class="card-text">Testo di prova</p> -->
                                         <div class="decoration"></div>
@@ -154,30 +160,31 @@ export default {
 .restaurant {
     // BACKGROUND COLOR
         position:relative;
+        background-color: lighten(#7c2a02, 40%);;
          
-        background: linear-gradient(67deg, #7c2a02, #121c19, #f3ba32);
-        background-size: 600% 600%;
+    //     background: linear-gradient(67deg, #7c2a02, #121c19, #f3ba32);
+    //     background-size: 600% 600%;
 
-        -webkit-animation: AnimationName 23s ease infinite;
-        -moz-animation: AnimationName 23s ease infinite;
-        animation: AnimationName 23s ease infinite;
+    //     -webkit-animation: AnimationName 23s ease infinite;
+    //     -moz-animation: AnimationName 23s ease infinite;
+    //     animation: AnimationName 23s ease infinite;
     
 
-    @-webkit-keyframes AnimationName {
-        0%{background-position:51% 0%}
-        50%{background-position:50% 100%}
-        100%{background-position:51% 0%}
-    }
-    @-moz-keyframes AnimationName {
-        0%{background-position:51% 0%}
-        50%{background-position:50% 100%}
-        100%{background-position:51% 0%}
-    }
-    @keyframes AnimationName {
-        0%{background-position:51% 0%}
-        50%{background-position:50% 100%}
-        100%{background-position:51% 0%}
-    }
+    // @-webkit-keyframes AnimationName {
+    //     0%{background-position:51% 0%}
+    //     50%{background-position:50% 100%}
+    //     100%{background-position:51% 0%}
+    // }
+    // @-moz-keyframes AnimationName {
+    //     0%{background-position:51% 0%}
+    //     50%{background-position:50% 100%}
+    //     100%{background-position:51% 0%}
+    // }
+    // @keyframes AnimationName {
+    //     0%{background-position:51% 0%}
+    //     50%{background-position:50% 100%}
+    //     100%{background-position:51% 0%}
+    // }
     // BACKGROUND COLOR
 
     .container {
@@ -185,16 +192,18 @@ export default {
             max-width: 400px;
             padding: 20px 20px 40px 20px;
             border-radius: 10px;
-            // margin-top: 30px;
+
             background-color: darken(#fec866, 20%);
             position:absolute;
             top:-134px;
             left: 109px;
-           @media (max-width: 1050px) { 
+            @media (max-width: 1050px) { 
                top:-60px;
             }
+
             @media (max-width: 992px) { 
                top:-35px;
+               left: 30px;
             }
 
 
@@ -219,12 +228,60 @@ export default {
             flex-wrap: wrap;
             padding-top:60px;
 
-            .card-img-top{
-                width: 246px;
-                object-fit: cover;
+            .restaurant_cards {
+            // box-shadow: 4px 4px 25px $page_tertiary_color;
+            border-radius: 10px;
+            // background-color: lighten( black, 30%);
+            // background-color: #fec866;
+            background-color: darken(#fec866, 20%);
+            margin: 0;
+            padding: 0;
+            height: 300px;
+
+            // .card-img-top {
+            //     width: 246px;
+            //     object-fit: cover;
+            // } 
+
+                h5 {
+                    color: black;
+                    text-transform: capitalize;
+                    font-weight: 600;
+                }
+
+                p {
+                    color: $page_other_color;
+                }
+                // .decoration{
+                //     width: 100%;
+                //     margin: 50px 0;
+                //     height: 2px;
+                //     background-color: black;
+                // }
+
+                .card-body {
+                    img {
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        // height: 200px;
+                    }
+                }
+            }
+            .restaurant_cards:hover {
+                // box-shadow: 10px 10px 15px $page_tertiary_color;
+                transform: translateY(-10px);
+            }
+
+            .restaurant_btn {
+                // margin: 50px 2px 0;
+                padding: 5px 15px;
+                background-color: lighten(#311706, 40%);
+                color: #7c2a02;
+                // transition: 0.2s;
+                border-radius: 10px;
+                // box-shadow: 1px 1px 10px;
                 
             }
-           
         }
     }
 }
