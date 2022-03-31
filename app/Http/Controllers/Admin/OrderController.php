@@ -31,6 +31,10 @@ class OrderController extends Controller
         $dishes = $order->dishes;
         foreach ($dishes as $dishes) {
             $dishes->quantity = $dishes->pivot->quantity;
+        // dd($plates);
+        foreach ($dishes as $dish) {
+            $dishes->quantity = $dish->pivot->quantity;
+            // dd($plate->quantity);
         }
 
 

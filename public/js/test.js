@@ -80003,7 +80003,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/user/laravel/deliveboo-48-team3/resources/js/test.js */"./resources/js/test.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\laravel-projects\deliveboo-48-team3\resources\js\test.js */"./resources/js/test.js");
 
 
 /***/ })
