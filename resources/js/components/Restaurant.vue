@@ -30,14 +30,16 @@
                                 <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
                                 <!-- <p class="card-text">Testo di prova</p> -->
                                 <div class="decoration"></div>
-                                <router-link :to="{
+                                <!-- <button class="btn restaurant_btn" >Vai al ristorante</button> -->
+                                <a class="btn restaurant_btn" :href="`http://127.0.0.1:8000/restaurants/${restaurant.slug}`"> Vai al ristorante</a>
+                                <!-- <router-link :to="{
                             name: 'restaurant.details',
                             params: { slug: restaurant.slug }
                         }">
                         <button class="btn restaurant_btn">
                             Vai al ristorante
                         </button>
-                        </router-link>
+                        </router-link> -->
                             </div>
                         </div>
                         <!-- END RESTAURANT CARD -->
@@ -52,14 +54,17 @@
                                 <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
                                 <!-- <p class="card-text">Testo di prova</p> -->
                                 <div class="decoration"></div>
-                                <router-link :to="{
+                                <a class="btn restaurant_btn" :href="`http://127.0.0.1:8000/restaurants/${restaurant.slug}`"> Vai al ristorante</a>
+                                
+
+                                <!-- <router-link :to="{
                             name: 'restaurant.details',
                             params: { slug: restaurant.slug }
                         }">
                         <button class="btn restaurant_btn">
                             Vai al ristorante
                         </button>
-                        </router-link>
+                        </router-link> -->
                             </div>
                         </div>
                         <!-- END RESTAURANT CARD -->
@@ -76,14 +81,16 @@
                                         <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
                                         <!-- <p class="card-text">Testo di prova</p> -->
                                         <div class="decoration"></div>
-                                        <router-link :to="{
+                                        <!-- <router-link :to="{
                                     name: 'restaurant.details',
                                     params: { slug: restaurant.slug }
                                 }">
                                 <button class="btn restaurant_btn">
                                     Vai al ristorante
                                 </button>
-                                </router-link>
+                                </router-link> -->
+                                    <a class="btn restaurant_btn" :href="`http://127.0.0.1:8000/restaurants/${restaurant.slug}`"> Vai al ristorante</a>
+
                                     </div>
                                 </div>
                                 <!-- END SINGLE RESTAURANT CARD -->
@@ -226,6 +233,7 @@ export default {
             }
            
         }
+        
     }
 }
 </style>
