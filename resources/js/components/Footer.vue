@@ -50,17 +50,17 @@
                 <div class="container">
                     <div class="bottom_icons">
                         <div class="icon">
-                            <a href="">
+                            <a href="https://it-it.facebook.com/" target="_blank">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </div>
                         <div class="icon">
-                            <a href="">
-                                <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/home">
+                                <i class="fab fa-linkedin" target="_blank"></i>
                             </a>
                         </div>
                         <div class="icon">
-                            <a href="">
+                            <a href="https://github.com/" target="_blank">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
@@ -197,6 +197,9 @@ footer{
 
                 .icon{
                     font-size: 30px;
+                }
+                .icon:hover{
+                    transform:scale(1.3);
                 }
             }
         }
