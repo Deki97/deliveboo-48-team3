@@ -9,7 +9,7 @@ import WorkWithUs from './pages/WorkWithUs.vue';
 import Contacts from './pages/Contacts.vue';
 import NotFound from './pages/NotFound.vue';
 import Categories from './pages/Categories.vue';
-import RestaurantDetail from './pages/RestaurantDetail.vue';
+// import RestaurantDetail from './pages/RestaurantDetail.vue';
 
 
 const router = new VueRouter({
@@ -35,11 +35,11 @@ const router = new VueRouter({
             name: "contattaci",
             component: Contacts
         },
-        {
-            path: "/restaurants/:slug",
-            name: "restaurant.details",
-            component: RestaurantDetail
-        },
+        // {
+        //     path: "/restaurants/:slug",
+        //     name: "restaurant.details",
+        //     component: RestaurantDetail
+        // },
         // {
         //     path: "/latest-news",
         //     name: "latest-news",

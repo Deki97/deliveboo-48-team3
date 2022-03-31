@@ -29,7 +29,7 @@ class RestaurantController extends Controller
      */
     public function show($slug)
     {
-        // $restaurant = Restaurant::find($slug);
+        // $restaurant = Restaurant::find($id);
         $restaurant = Restaurant::where('slug', '=', $slug)->first();
         $restaurant_dishes = Dish::where('restaurant_id', $restaurant->id)->with('restaurant')->get();
         $filtered_dish = [];

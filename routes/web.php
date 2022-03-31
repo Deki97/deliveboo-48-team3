@@ -24,12 +24,17 @@ Route::middleware('auth')
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('restaurants','RestaurantController');
         Route::resource('dishes','DishController');
+        
         Route::get('/orders/trash', 'OrderController@trash')->name('orders.trash');
-			Route::get('/orders', 'OrderController@index')->name('orders.index');
-			Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
-			Route::delete('/orders/{order}', 'OrderController@destroy')->name('orders.destroy');
-			Route::patch('/orders/{order}/restore', 'OrderController@restore')->name('orders.restore');
+        Route::get('/orders', 'OrderController@index')->name('orders.index');
+        Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+        Route::delete('/orders/{order}', 'OrderController@destroy')->name('orders.destroy');
+        Route::patch('/orders/{order}/restore', 'OrderController@restore')->name('orders.restore');
 
+    });
+
+    Route::get('/restaurants/{restaurant}', function () {
+        return view('guests.menu');
     });
 
     Route::get('{any?}', function() {

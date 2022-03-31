@@ -9,7 +9,7 @@
         align-items-center
       "
     >
-      <div class="bg img-fluid"></div>
+      <div>Pagamento avvenuto con successo.</div>
       <div>
         <a class="btn d-block btn-primary mt-1" href="http://127.0.0.1:8000/"
           >Torna alla home</a
