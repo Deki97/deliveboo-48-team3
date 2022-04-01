@@ -143,31 +143,31 @@ export default {
 .restaurant {
     // BACKGROUND COLOR
         position:relative;
-        background-color: lighten(#7c2a02, 40%);;
+        // background-color: lighten(#7c2a02, 40%);
          
-    //     background: linear-gradient(67deg, #7c2a02, #121c19, #f3ba32);
-    //     background-size: 600% 600%;
+        background: linear-gradient(67deg, #7c2a02, #121c19, #f3ba32);
+        background-size: 600% 600%;
 
-    //     -webkit-animation: AnimationName 23s ease infinite;
-    //     -moz-animation: AnimationName 23s ease infinite;
-    //     animation: AnimationName 23s ease infinite;
+        -webkit-animation: AnimationName 23s ease infinite;
+        -moz-animation: AnimationName 23s ease infinite;
+        animation: AnimationName 23s ease infinite;
     
 
-    // @-webkit-keyframes AnimationName {
-    //     0%{background-position:51% 0%}
-    //     50%{background-position:50% 100%}
-    //     100%{background-position:51% 0%}
-    // }
-    // @-moz-keyframes AnimationName {
-    //     0%{background-position:51% 0%}
-    //     50%{background-position:50% 100%}
-    //     100%{background-position:51% 0%}
-    // }
-    // @keyframes AnimationName {
-    //     0%{background-position:51% 0%}
-    //     50%{background-position:50% 100%}
-    //     100%{background-position:51% 0%}
-    // }
+    @-webkit-keyframes AnimationName {
+        0%{background-position:51% 0%}
+        50%{background-position:50% 100%}
+        100%{background-position:51% 0%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:51% 0%}
+        50%{background-position:50% 100%}
+        100%{background-position:51% 0%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:51% 0%}
+        50%{background-position:50% 100%}
+        100%{background-position:51% 0%}
+    }
     // BACKGROUND COLOR
 
     .container {
@@ -212,19 +212,11 @@ export default {
             padding-top:60px;
 
             .restaurant_cards {
-            // box-shadow: 4px 4px 25px $page_tertiary_color;
-            border-radius: 10px;
-            // background-color: lighten( black, 30%);
-            // background-color: #fec866;
             background-color: darken(#fec866, 20%);
             margin: 0;
             padding: 0;
             height: 300px;
-
-            // .card-img-top {
-            //     width: 246px;
-            //     object-fit: cover;
-            // } 
+            transition: 0.2s;
 
                 h5 {
                     color: black;
@@ -235,34 +227,28 @@ export default {
                 p {
                     color: $page_other_color;
                 }
-                // .decoration{
-                //     width: 100%;
-                //     margin: 50px 0;
-                //     height: 2px;
-                //     background-color: black;
-                // }
 
                 .card-body {
                     img {
                         border-top-left-radius: 10px;
                         border-top-right-radius: 10px;
-                        // height: 200px;
+                        cursor: pointer;
+                        height: 160px;
                     }
                 }
             }
             .restaurant_cards:hover {
-                // box-shadow: 10px 10px 15px $page_tertiary_color;
                 transform: translateY(-10px);
+                transition: 0.2s;
+                cursor: pointer;
+                box-shadow: -10px 10px 5px #fec866;
             }
 
             .restaurant_btn {
-                // margin: 50px 2px 0;
                 padding: 5px 15px;
                 background-color: lighten(#311706, 40%);
                 color: #7c2a02;
-                // transition: 0.2s;
                 border-radius: 10px;
-                // box-shadow: 1px 1px 10px;
                 
             }
         }

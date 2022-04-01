@@ -1,5 +1,9 @@
 <template>
+
   <div class="bg-color">
+
+  <div class="restaurant-detail">
+
     <HeaderRestaurant />
     <div class="container-fluid px-md-5">
       <div class="margin-top-120">
@@ -282,13 +286,17 @@ body {
   margin-top: 120px;
 }
 
-.card {
+.restaurant-detail {
+  background-color: black;
+
+  .card {
   margin-top: 100px;
   height: 500px;
   position: relative;
   background-color: white;
   transition: all 0.3s ease-out;
   border-radius: 50px;
+
 }
 .card .description-wrap {
   padding: 105px 30px;
@@ -467,4 +475,7 @@ body {
     font-size: 15px;
   }
 }
+}
+
+
 </style>
