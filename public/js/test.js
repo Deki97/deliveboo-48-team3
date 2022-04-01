@@ -2577,9 +2577,6 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         'name': '/lavora-con-noi',
         'label': 'Lavora con noi'
-      }, {
-        'name': '/contattaci',
-        'label': 'Contattaci'
       }]
     };
   },
