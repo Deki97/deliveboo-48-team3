@@ -188,16 +188,19 @@ footer{
             width: 100%;
             border-top:1px solid $page_secondary_color;
             margin-top: 50px;
+            
             .bottom_icons{
                 width:60%;
                 margin: auto;
                 padding:50px 0;
                 display: flex;
                 justify-content: space-around;
+                
 
                 .icon{
                     font-size: 30px;
                 }
+                
                 .icon:hover{
                     transform:scale(1.3);
                     transition-delay: 0.5s;

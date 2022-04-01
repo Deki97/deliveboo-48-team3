@@ -8,7 +8,7 @@
     <div class="container-fluid px-md-5">
       <div class="margin-top-120">
         <div v-if="!isCheckout" class="container-fluid">
-          <div class="row w-100">
+          <div class="row w-100 pos-rel">
             <div
               class="
                 col-8 col-lg-9 col-xl-10
@@ -77,6 +77,7 @@
                     </div>
                     <p class="plate-price">{{ dish.price }} €</p>
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -90,7 +91,7 @@
               "
             >
               <div
-                class="text-center cart-modal-container cart-fixer fixed-top"
+                class="text-center cart-modal-container cart-fixer position-cart"
               >
                 <div
                   class="
@@ -105,7 +106,7 @@
                     class="
                       text-center
                       cart-modal-container cart-fixer
-                      fixed-top
+                      
                     "
                   >
                     <div class="mw-100">
@@ -145,6 +146,7 @@
       </div>
     </div>
     <Footer />
+  </div>
   </div>
 </template>
 <script>
@@ -291,7 +293,7 @@ body {
 
   .card {
   margin-top: 100px;
-  height: 500px;
+  height: 450px;
   position: relative;
   background-color: white;
   transition: all 0.3s ease-out;
@@ -356,6 +358,14 @@ body {
 
 .card:hover {
   cursor: pointer;
+}
+.pos-rel{
+  position: relative;
+}
+.position-cart{
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .cart-modal-container {
