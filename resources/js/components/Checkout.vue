@@ -2,15 +2,15 @@
   <div>
     <div class="container mt-3">
       <div class="d-flex">
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 cart-position-check">
           <ModalCart
             class="mt-5 text-center"
             :shoppingCart="shoppingCart"
             :totalPrice="totalPrice"
           />
         </div>
-        <div v-if="form" class="form col-xl-10 col-lg-9 col-md-8 col-sm-7 ml-5">
-          <h2 class="text-center">Inserisci i tuoi dati</h2>
+        <div v-if="form" class="form col-xl-10 col-lg-9 col-md-8 col-sm-7 ml-5 form-margin">
+          <h2 class="text-center orange_text">Inserisci i tuoi dati</h2>
           <div class="mb-1">
             <label for="name"></label>
             <input
@@ -51,7 +51,7 @@
               placeholder="Email.."
               v-model="email"
             />
-            <div id="emailHelp" class="form-text">
+            <div id="emailHelp" class="form-text orange_text">
               We'll never share your email with anyone else.
             </div>
           </div>
@@ -212,4 +212,14 @@ export default {
 
 <style lang="scss">
 @import "../../sass/app.scss";
+.cart-position-check{
+  position: relative;
+  top: 68px;
+}
+.orange_text{
+  color:$page_other_color;
+}
+.form-margin{
+  margin: 50px 0;
+}
 </style>
