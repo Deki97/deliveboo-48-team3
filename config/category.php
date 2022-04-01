@@ -16,4 +16,21 @@ return [
         'name' => 'Messicano',
         'slug' => ''
     ],
+    [
+        'name' => 'Brasiliana',
+        'slug' => ''
+    ],
+    [
+        'name' => 'Greco',
+        'slug' => ''
+    ],
+    [
+        'name' => 'Cinese',
+        'slug' => ''
+    ],
+    [
+        'name' => 'Pesce',
+        'slug' => ''
+    ],
+    
 ];
