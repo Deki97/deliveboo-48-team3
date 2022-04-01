@@ -2,151 +2,67 @@
 
   <div class="bg-color">
 
-  <div class="restaurant-detail">
-
-    <HeaderRestaurant />
-    <div class="container-fluid px-md-5">
-      <div class="margin-top-120">
-        <div v-if="!isCheckout" class="container-fluid">
-          <div class="row w-100">
-            <div
-              class="
-                col-6 col-md-3
-                d-flex
-                flex-column
-                align-items-center cart-position
-                
-              "
-            >
+    <div class="restaurant-detail">
+      <HeaderRestaurant />
+      <div class="container-fluid px-md-5">
+        <div class="margin-top-120">
+          <div v-if="!isCheckout" class="container-fluid">
+            <div class="row w-100">
               <div
-                class="text-center cart-modal-container"
-              >
-                <div
-                  class="
-                    col-6 col-md-3
-                    d-flex
-                    flex-column
-                    align-items-center
-                    
-                  "
-                >
-                  <div
-                    class="
-                      text-center
-                      cart-modal-container
-                      
-                    "
-                  >
-                    <div class="mw-100">
-                      <ModalCart
-                        :shoppingCart="shoppingCart"
-                        :totalPrice="totalPrice"
-                      />
-                      <div class="d-flex justify-content-between">
-                        <a
-                          class="btn btn-success mt-3 mr-4"
-                          @click="showCheckoutComp"
-                        >
-                          Checkout
-                        </a>
-                        <button
-                          class="btn btn-danger mt-3 ml-3"
-                          @click="clearLocalStorage"
-                        >
-                          Svuota
-                        </button>
+                class=" col-6 col-md-3 d-flex flex-column align-items-center cart-position">
+                <div class="text-center cart-modal-container">
+                  <div class="col-6 col-md-3 d-flex flex-column align-items-center">
+                    <div class="text-center cart-modal-container">
+                      <div class="mw-100">
+                        <ModalCart :shoppingCart="shoppingCart" :totalPrice="totalPrice" />
+                        <div class="d-flex justify-content-between">
+                          <a class="btn btn-success mt-3 mr-4" @click="showCheckoutComp">
+                            Checkout
+                          </a>
+                          <button class="btn btn-danger mt-3 ml-3" @click="clearLocalStorage">
+                            Svuota
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" col-8 col-lg-9 col-xl-10 d-flex justify-content-around flex-wrap ">
+                <div class="  col-10 col-md-5 col-xl-3 mx-xl-1 mb-5 d-flex flex-wrap justify-content-around " v-for="(dish, index) in dishes" :key="dish.id + index">
+                  <div class="card">
+                    <div class="card-img">
+                      <img :src="dish.path_img" alt="">
+                    </div>
+                    <div class="description-wrap mw-100 text-center">
+                      <div class="description">
+                        <h5 class="plate-name">{{ dish.name }}</h5>
+                        <p class="plate-description">{{ dish.description }}</p>
+                        <div
+                          class=" plate-quantity-menu d-flex align-items-center justify-content-around flex-wrap ">
+                          <a class=" btn btn-danger quantity-btn quantity-btn-negative " v-if="dish.quantity && shoppingCart.length > 0" @click="removePlateToCart(dish, index)"> - </a>
+                          <span v-else class="px-4 px-lg-3 replacer">.</span>
+                          <p class="plate-quantity" v-if="shoppingCart.length === 0" >
+                            0
+                          </p>
+                          <p v-else class="plate-quantity">{{ dish.quantity }}</p>
+                          <a class=" btn btn-success quantity-btn quantity-btn-positive " @click="addPlateToCart(dish)">+</a>
+                        </div>
+                        <p class="plate-price">{{ dish.price }} €</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="
-                col-8 col-lg-9 col-xl-10
-                d-flex
-                justify-content-around
-                flex-wrap
-              "
-            >
-              <div
-                class="
-                  card
-                  col-10 col-md-5 col-xl-3
-                  mx-xl-1
-                  mb-5
-                  d-flex
-                  flex-wrap
-                  justify-content-around
-                "
-                v-for="(dish, index) in dishes"
-                :key="dish.id + index"
-              >
-                <div class="pro-pic">
-                 
-                
-                  <img :src="dish.path_img" alt="">
-                </div>
-                <div class="description-wrap mw-100 text-center">
-                  <div class="description">
-                    <h5 class="plate-name">{{ dish.name }}</h5>
-                    <p class="plate-description">{{ dish.description }}</p>
-                    <div
-                      class="
-                        plate-quantity-menu
-                        d-flex
-                        align-items-center
-                        justify-content-around
-                        flex-wrap
-                      "
-                    >
-                      <a
-                        class="
-                          btn btn-danger
-                          quantity-btn quantity-btn-negative
-                        "
-                        v-if="dish.quantity && shoppingCart.length > 0"
-                        @click="removePlateToCart(dish, index)"
-                      >
-                        -
-                      </a>
-                      <span v-else class="px-4 px-lg-3 replacer">.</span>
-                      <p
-                        class="plate-quantity"
-                        v-if="shoppingCart.length === 0"
-                      >
-                        0
-                      </p>
-                      <p v-else class="plate-quantity">{{ dish.quantity }}</p>
-                      <a
-                        class="
-                          btn btn-success
-                          quantity-btn quantity-btn-positive
-                        "
-                        @click="addPlateToCart(dish)"
-                        >+</a
-                      >
-                    </div>
-                    <p class="plate-price">{{ dish.price }} €</p>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
+          </div>
+          <div>
+            <Checkout v-if="isCheckout" :shoppingCart="shoppingCart" :totalPrice="totalPrice" :restaurant="restaurant" />
           </div>
         </div>
-        <div>
-          <Checkout
-            v-if="isCheckout"
-            :shoppingCart="shoppingCart"
-            :totalPrice="totalPrice"
-            :restaurant="restaurant"
-          />
-        </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
   </div>
 </template>
 <script>
@@ -297,15 +213,34 @@ body {
 
   .card {
   margin-top: 100px;
-  height: 450px;
+  height: 221px;
+  width: 221px;
   position: relative;
   background-color: white;
-  transition: all 0.3s ease-out;
-  border-radius: 50px;
+  // transition: all 0.3s ease-out;
+  border-radius: 100%;
+  overflow: hidden;
+  background-color: #f3ba32;
+
+}
+
+.card-img{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-img img{
+  width: 97%;
+  height: 97%;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
 
 }
 .card .description-wrap {
-  padding: 105px 30px;
+  padding: 32px;
   position: relative;
   overflow: hidden;
 }
@@ -314,29 +249,25 @@ body {
   text-align: center;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
   flex-wrap: wrap;
-  font-size: 20px;
-  line-height: 1.4;
-  transition: all 0.5s ease-out;
-  overflow-x: auto;
-  transform: translateY(100%);
-  opacity: 0;
-  transform: translateY(0%);
-  opacity: 1;
-  padding-top: 60px;
+  font-size: 15px;
 }
 .card .description > * {
   width: 100%;
+  margin: 0;
 }
 .card .description h3 {
   margin: 0;
-  font-size: 26px;
+  font-size: 17px;
 }
 .card .description h4 {
   margin: 0;
+}
+.card:hover .card-img{
+  display: none;
+}
+.description-wrap:hover{
+  display: block;
 }
 .pro-pic {
   position: absolute;
@@ -391,6 +322,7 @@ body {
 }
 .plate-description {
   font-size: 20px;
+  margin: 0;
 //   font-style: italic;
 }
 .plate-quantity {
@@ -448,7 +380,7 @@ body {
   }
   .plate-quantity,
   .plate-name {
-    font-size: 25px;
+    font-size: 20px;
   }
   .quantity-btn-positive,
   .quantity-btn-negative {
@@ -471,10 +403,10 @@ body {
     justify-content: space-around;
   }
   .plate-name {
-    font-size: 25px;
+    font-size: 20px;
   }
   .plate-quantity {
-    font-size: 55px;
+    font-size: 40px;
   }
   .quantity-btn {
     font-size: 15px;

@@ -50,7 +50,6 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center flex-wrap" v-else>
-                    
                     {{ restaurantFilter() }}
                     <div v-for="(restaur, index) in filter" :key="index">
                         <!-- SINGLE RESTAURANT CARD -->
