@@ -81,7 +81,6 @@ export default {
                 'name':'/lavora-con-noi',
                 'label':'Lavora con noi',
                 }
-                },
             ],
         };
     },
