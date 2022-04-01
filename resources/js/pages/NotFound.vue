@@ -1,23 +1,17 @@
 <template>
     <div class="not-found-wrapper">
         <div class="container">
-            <div class="error_content">
-                <div class="error_page text-center">
-                    <!-- <h1 class="text-uppercase mb-5 text-white">Error 401</h1> -->
-                    <div class="error-logo d-flex justify-content-center align-items-center">
-                        <div class="number">
-                            4
-                        </div>
+            <div class="text-wrapper">
+                <div class="code-wrapper">
+                    404
+                </div>
 
-                        <div class="image">
-                            <img src="../../assets/img/pizza.png" alt="Pizza Logo">
-                        </div>
+                <div class="sorry-wrapper">
+                    Spiacenti, non abbiamo trovato nessun risultato per la tua ricerca.
+                </div>
 
-                        <div class="number">
-                            4
-                        </div>
-                    </div>
-                    <router-link class="nav-link text-decoration-none fs-3 text-white" :to="{name:'home'}">Torna alla <span class="return_home text-warning">HOMEPAGE</span></router-link>
+                <div class="button-wrapper">
+                    <router-link class="nav-link text-decoration-none fs-3 text-white" :to="{name:'home'}"><span class="return_home">HOMEPAGE</span></router-link>
                 </div>
             </div>
         </div>
@@ -33,34 +27,35 @@ export default {
 <style lang="scss" scoped>
 
 .not-found-wrapper {
-    background-color: #000103;
-    height: 100vh;
-    .error_content{
-        width:100%;
-        padding-top:50px;
-        // height: 500px;
-        border: 1px solid #b22222;
-        border-radius: 20px;
-        background-color: #000103;
-        background: linear-gradient(15deg, rgba(234,237,199,1) 0%, rgba(243,129,50,1) 25%, rgba(124,9,2,1) 100%);
+    padding: 300px 0 120px 0;
+    background-image:linear-gradient(rgba(0, 0, 0, .4), 
+      rgba(0, 0, 0, .4)), url('../../assets/img/empty-dish.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
 
-        .error_page {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+    .text-wrapper {
+        .code-wrapper {
+            font-size: 100px;
+            font-weight: 500;
+        }
 
-            .error-logo {
-                    .number {
-                        font-size: 300px;
-                    }
-                }
+        .sorry-wrapper {
+            font-size: 32px;
         }
-        .return_home:hover{
-                color:white;
-                transform:scale(0.7);
-            }
+
+        .button-wrapper {
+            background-color: transparent;
+            border: 3px solid white;
+            display: inline-block;
+            padding: 5px 20px;
+            font-weight: bold;
+            margin-top: 150px;
+            cursor: pointer;
         }
+    }
 }
 
 </style>
