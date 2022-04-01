@@ -6,10 +6,8 @@ Vue.use(VueRouter);
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import WorkWithUs from './pages/WorkWithUs.vue';
-import Contacts from './pages/Contacts.vue';
 import NotFound from './pages/NotFound.vue';
 import Categories from './pages/Categories.vue';
-// import RestaurantDetail from './pages/RestaurantDetail.vue';
 
 
 const router = new VueRouter({
@@ -29,11 +27,6 @@ const router = new VueRouter({
             path: "/lavora-con-noi",
             name: "lavora-con-noi",
             component: WorkWithUs
-        },
-        {
-            path: "/contattaci",
-            name: "contattaci",
-            component: Contacts
         },
         // {
         //     path: "/restaurants/:slug",
