@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-color">
     <HeaderRestaurant />
     <div class="container-fluid px-md-5">
       <div>
@@ -141,18 +141,27 @@
         </div>
       </div>
     </div>
+  
+    <div>
+      <Footer />
+    </div>
+    
   </div>
+
 </template>
 <script>
 import ModalCart from "../components/ModalCart.vue";
 import Checkout from "../components/Checkout.vue";
 import HeaderRestaurant from "../components/HeaderRestaurant.vue";
+import Footer from "../components/Footer.vue";
+
 export default {
   name: "Cart",
   components: {
     ModalCart,
     Checkout,
-    HeaderRestaurant
+    HeaderRestaurant,
+    Footer
   },
   data() {
     return {
@@ -248,11 +257,36 @@ export default {
 @import "../../sass/app.scss";
 body {
   margin: 0 !important;
-}
 
+}
+.bg-color{
+  background: linear-gradient(67deg, #7c2a02, #121c19, #f3ba32);
+       background-size: 600% 600%;
+
+        -webkit-animation: AnimationName 23s ease infinite;
+         -moz-animation: AnimationName 23s ease infinite;
+         animation: AnimationName 23s ease infinite;
+    
+
+     @-webkit-keyframes AnimationName {
+         0%{background-position:51% 0%}
+         50%{background-position:50% 100%}
+         100%{background-position:51% 0%}
+     }
+     @-moz-keyframes AnimationName {
+         0%{background-position:51% 0%}
+         50%{background-position:50% 100%}
+         100%{background-position:51% 0%}
+     }
+     @keyframes AnimationName {
+         0%{background-position:51% 0%}
+         50%{background-position:50% 100%}
+         100%{background-position:51% 0%}
+     }
+}
 .card {
   margin-top: 100px;
-  height: 500px;
+  /* height: 300px; */
   position: relative;
   background-color: #fec866;
   transition: all 0.3s ease-out;
@@ -280,6 +314,7 @@ body {
   opacity: 0;
   transform: translateY(0%);
   opacity: 1;
+  padding-top: 60px;
 }
 .card .description > * {
   width: 100%;
