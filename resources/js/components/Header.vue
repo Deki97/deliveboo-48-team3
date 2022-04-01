@@ -43,11 +43,15 @@
                     <div class="burger-buttons d-flex flex-column">
                         <!-- Burger Menu Buttons -->
                         <div class="single-burger-button">
-                            <button type="button" class="btn btn-warning">Accedi<span class="button-icon"><i class="fa-solid fa-right-to-bracket"></i></span></button>
+                            <button type="button" class="btn btn-warning">
+                                <a href="http://127.0.0.1:8000/login" target="_blank">Accedi<span class="button-icon"><i class="fa-solid fa-right-to-bracket"></i></span></a>
+                            </button>
                         </div>
 
                         <div class="single-burger-button">
-                            <button type="button" class="btn btn-warning">Registrati<span class="button-icon"><i class="fa-solid fa-house"></i></span></button>
+                            <button type="button" class="btn btn-warning">
+                                <a href="http://127.0.0.1:8000/register" target="_blank">Registrati<span class="button-icon"><i class="fa-solid fa-house"></i></span></a>
+                            </button>
                         </div>
                     </div>
                     </Slide>
@@ -159,6 +163,7 @@ header {
             .bm-menu {
                 background-color: #7c2a02;
                 border: 5px $page_secondary_color;
+                // z-index: 1000;
             }
 
             .burger-link {
@@ -187,8 +192,12 @@ header {
 
                     .btn {
                         background-color: #fec866;
-                        color: #7c2a02;
                         border-radius: 20px;
+
+                        a {
+                            color: #7c2a02;
+                            text-decoration: none;
+                        }
                     }
 
                     .button-icon {
