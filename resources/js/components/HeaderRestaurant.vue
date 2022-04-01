@@ -113,6 +113,11 @@ header {
     font-size: 20px;
     // text-transform: uppercase;
     width: 100%;
+    border-bottom: 1px solid $page_secondary_color;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    height: 120px;
     
     nav {
         width: 100%;

@@ -1,8 +1,12 @@
 <template>
+
+  <div class="bg-color">
+
   <div class="restaurant-detail">
+
     <HeaderRestaurant />
     <div class="container-fluid px-md-5">
-      <div>
+      <div class="margin-top-120">
         <div v-if="!isCheckout" class="container-fluid">
           <div class="row w-100">
             <div
@@ -26,12 +30,11 @@
                 v-for="(dish, index) in dishes"
                 :key="dish.id + index"
               >
-                <div
-                  class="pro-pic"
-                  v-bind:style="{
-                    'background-image': 'url(' + imgURL + dish.path_img + ')',
-                  }"
-                ></div>
+                <div class="pro-pic">
+                 
+                
+                  <img :src="dish.path_img" alt="">
+                </div>
                 <div class="description-wrap mw-100 text-center">
                   <div class="description">
                     <h5 class="plate-name">{{ dish.name }}</h5>
@@ -141,18 +144,22 @@
         </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 <script>
 import ModalCart from "../components/ModalCart.vue";
 import Checkout from "../components/Checkout.vue";
 import HeaderRestaurant from "../components/HeaderRestaurant.vue";
+import Footer from "../components/Footer.vue";
+
 export default {
   name: "Cart",
   components: {
     ModalCart,
     Checkout,
-    HeaderRestaurant
+    HeaderRestaurant,
+    Footer
   },
   data() {
     return {
@@ -249,6 +256,35 @@ export default {
 body {
   margin: 0 !important;
 }
+.bg-color{
+       background: linear-gradient(67deg, #7c2a02, #121c19, #f3ba32);
+         background-size: 600% 600%;
+
+         -webkit-animation: AnimationName 23s ease infinite;
+         -moz-animation: AnimationName 23s ease infinite;
+         animation: AnimationName 23s ease infinite;
+    
+
+     @-webkit-keyframes AnimationName {
+         0%{background-position:51% 0%}
+         50%{background-position:50% 100%}
+         100%{background-position:51% 0%}
+     }
+     @-moz-keyframes AnimationName {
+         0%{background-position:51% 0%}
+         50%{background-position:50% 100%}
+         100%{background-position:51% 0%}
+     }
+     @keyframes AnimationName {
+         0%{background-position:51% 0%}
+         50%{background-position:50% 100%}
+         100%{background-position:51% 0%}
+     }
+     
+}
+.margin-top-120{
+  margin-top: 120px;
+}
 
 .restaurant-detail {
   background-color: black;
@@ -257,7 +293,7 @@ body {
   margin-top: 100px;
   height: 500px;
   position: relative;
-  background-color: #fec866;
+  background-color: white;
   transition: all 0.3s ease-out;
   border-radius: 50px;
 
@@ -284,6 +320,7 @@ body {
   opacity: 0;
   transform: translateY(0%);
   opacity: 1;
+  padding-top: 60px;
 }
 .card .description > * {
   width: 100%;
@@ -310,6 +347,11 @@ body {
   height: 150px;
   border-radius: 50%;
   border: 3px solid #7c2a02;
+  overflow: hidden;
+}
+.pro-pic img{
+  width: 100%;
+  height: 100%;
 }
 
 .card:hover {
