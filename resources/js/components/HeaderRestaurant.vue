@@ -12,8 +12,6 @@
                     <ul class="navbar-nav">
                         <li v-for="(link,index) in navbar_menu" :key="index" class="nav-item active mx-3">
                             <a class="burger-link" :href="`${baseUrl}${link.name}`" active-class="active-link">{{link.label}} </a>
-                            
-                            <!-- <router-link class="nav-link" :to="{name:link.name}" active-class="active-link">{{link.label}}</router-link> -->
                         </li>
                     </ul>
                 </div>
@@ -40,16 +38,12 @@
                     <!-- Burger Links -->
                     <li v-for="(link,index) in navbar_menu" :key="index">
                         <a class="burger-link" :href="`${baseUrl}${link.name}`" active-class="active-link">{{link.label}} </a>
-                        
-                        <!-- <router-link class="burger-link" :to="{name:link.name}" active-class="active-link">{{link.label}}</router-link> -->
                     </li>
-
                     <div class="burger-buttons d-flex flex-column">
                         <!-- Burger Menu Buttons -->
                         <div class="single-burger-button">
                             <button type="button" class="btn btn-warning">Accedi<span class="button-icon"><i class="fa-solid fa-right-to-bracket"></i></span></button>
                         </div>
-
                         <div class="single-burger-button">
                             <button type="button" class="btn btn-warning">Registrati<span class="button-icon"><i class="fa-solid fa-house"></i></span></button>
                         </div>
@@ -87,6 +81,7 @@ export default {
                 'name':'/lavora-con-noi',
                 'label':'Lavora con noi',
                 }
+                },
             ],
         };
     },
@@ -109,6 +104,11 @@ header {
     font-size: 20px;
     // text-transform: uppercase;
     width: 100%;
+    border-bottom: 1px solid $page_secondary_color;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    height: 120px;
     
     nav {
         width: 100%;
