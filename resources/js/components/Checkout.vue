@@ -62,7 +62,7 @@
             <a
               @click="clearLocalStorage"
               class="btn btn-danger"
-              :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
+              :href="`http://127.0.0.1:8000/restaurants/${restaurant.slug}`"
               >Cancella ordine</a
             >
           </div>

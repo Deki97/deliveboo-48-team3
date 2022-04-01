@@ -1,15 +1,15 @@
 <template>
-
   <div class="bg-color">
-
     <div class="restaurant-detail">
       <HeaderRestaurant />
       <div class="container-fluid px-md-5">
         <div class="margin-top-120">
           <div v-if="!isCheckout" class="container-fluid">
-            <div class="row w-100">
-              <div
-                class=" col-6 col-md-3 d-flex flex-column align-items-center cart-position">
+            <div class="d-flex page_titles justify-content-center">
+              <h2>I Piatti</h2>
+            </div>
+            <div class="row w-100 justify-content-center">
+              <div class=" col-6 col-md-3 d-flex flex-column align-items-center cart-position">
                 <div class="text-center cart-modal-container">
                   <div class="col-6 col-md-3 d-flex flex-column align-items-center">
                     <div class="text-center cart-modal-container">
@@ -205,11 +205,11 @@ body {
 }
 .cart-position{
   position: absolute;
-  top: 220px;
+  top: 135px;
   right: 0;
 }
 .restaurant-detail {
-  background-color: black;
+  // background-color: black;
 
   .card {
   margin-top: 100px;
