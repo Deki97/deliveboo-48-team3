@@ -8,7 +8,7 @@
             <div class="d-flex page_titles justify-content-center">
               <h2>I Piatti</h2>
             </div>
-            <div class="row w-100 justify-content-center">
+            <div class="row w-100">
               <div class=" col-6 col-md-3 d-flex flex-column align-items-center cart-position">
                 <div class="text-center cart-modal-container">
                   <div class="col-6 col-md-3 d-flex flex-column align-items-center">
@@ -205,7 +205,7 @@ body {
 }
 .cart-position{
   position: absolute;
-  top: 135px;
+  top: 325px;
   right: 0;
 }
 .restaurant-detail {
