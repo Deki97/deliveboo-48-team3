@@ -8,7 +8,59 @@
     <div class="container-fluid px-md-5">
       <div class="margin-top-120">
         <div v-if="!isCheckout" class="container-fluid">
-          <div class="row w-100 pos-rel">
+          <div class="row w-100">
+            <div
+              class="
+                col-6 col-md-3
+                d-flex
+                flex-column
+                align-items-center cart-position
+                
+              "
+            >
+              <div
+                class="text-center cart-modal-container"
+              >
+                <div
+                  class="
+                    col-6 col-md-3
+                    d-flex
+                    flex-column
+                    align-items-center
+                    
+                  "
+                >
+                  <div
+                    class="
+                      text-center
+                      cart-modal-container
+                      
+                    "
+                  >
+                    <div class="mw-100">
+                      <ModalCart
+                        :shoppingCart="shoppingCart"
+                        :totalPrice="totalPrice"
+                      />
+                      <div class="d-flex justify-content-between">
+                        <a
+                          class="btn btn-success mt-3 mr-4"
+                          @click="showCheckoutComp"
+                        >
+                          Checkout
+                        </a>
+                        <button
+                          class="btn btn-danger mt-3 ml-3"
+                          @click="clearLocalStorage"
+                        >
+                          Svuota
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div
               class="
                 col-8 col-lg-9 col-xl-10
@@ -78,58 +130,6 @@
                     <p class="plate-price">{{ dish.price }} €</p>
                   </div>
                   
-                </div>
-              </div>
-            </div>
-            <div
-              class="
-                col-6 col-md-3
-                d-flex
-                flex-column
-                align-items-center
-                cart-column
-              "
-            >
-              <div
-                class="text-center cart-modal-container cart-fixer position-cart"
-              >
-                <div
-                  class="
-                    col-6 col-md-3
-                    d-flex
-                    flex-column
-                    align-items-center
-                    cart-column
-                  "
-                >
-                  <div
-                    class="
-                      text-center
-                      cart-modal-container cart-fixer
-                      
-                    "
-                  >
-                    <div class="mw-100">
-                      <ModalCart
-                        :shoppingCart="shoppingCart"
-                        :totalPrice="totalPrice"
-                      />
-                      <div class="d-flex justify-content-between">
-                        <a
-                          class="btn btn-success mt-3 mr-1"
-                          @click="showCheckoutComp"
-                        >
-                          Checkout
-                        </a>
-                        <button
-                          class="btn btn-danger mt-3"
-                          @click="clearLocalStorage"
-                        >
-                          Svuota
-                        </button>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -287,7 +287,11 @@ body {
 .margin-top-120{
   margin-top: 120px;
 }
-
+.cart-position{
+  position: absolute;
+  top: 220px;
+  right: 0;
+}
 .restaurant-detail {
   background-color: black;
 
