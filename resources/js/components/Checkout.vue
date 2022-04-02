@@ -214,12 +214,15 @@ export default {
 @import "../../sass/app.scss";
 .cart-position-check{
   position: relative;
-  top: 68px;
+  top: -15px;
 }
 .orange_text{
   color:$page_other_color;
 }
 .form-margin{
   margin: 50px 0;
+}
+.payment{
+  margin-bottom: 40px;
 }
 </style>
