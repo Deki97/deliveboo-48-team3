@@ -24,10 +24,10 @@
             <thead>
               <tr class="bg-secondary text-white">
                 <th scope="col">#</th>
-                <th scope="col">Order Date</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Paid</th>
-                <th scope="col">Customer Address</th>
+                <th scope="col">Data Ordine</th>
+                <th scope="col">Prezzo Totale</th>
+                <th scope="col">Status</th>
+                <th scope="col">Indirizzo</th>
                 <th scope="col"></th>
               </tr>
             </thead>

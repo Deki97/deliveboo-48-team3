@@ -11,7 +11,6 @@
     <div class="card my-5 py-3 font-size-2" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">Ordine n° {{ $order->id }}</h5>
-          {{-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> --}}
           <p class="card-text"><strong>Nome Cliente: </strong>{{ $order->name }}</p>
           <p class="card-text"><strong>Cognome Cliente: </strong>{{ $order->lastname }}</p>
           <p class="card-text"><strong>Indirizzo Cliente: </strong>{{ $order->address }}</p>
@@ -28,7 +27,8 @@
             <h6><strong>Piatti nell'ordine:</strong> </h6>
             @foreach ($order->dishes as $dish)
             
-            <li>{{$dish->quantity}} - {{ $dish->name }}  </li>
+           
+            <li>{{$dish->pivot->quantity}} - {{ $dish->name }}  </li>
             
             @endforeach
           </ul>
