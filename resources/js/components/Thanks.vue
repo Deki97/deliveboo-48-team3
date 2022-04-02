@@ -9,7 +9,7 @@
         align-items-center
       "
     >
-      <div>Pagamento avvenuto con successo.</div>
+      <div class="payments_title">Pagamento avvenuto con successo.</div>
       <div>
         <a class="btn d-block btn-primary mt-1" href="http://127.0.0.1:8000/"
           >Torna alla home</a
@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../sass/app.scss';
 .bg {
   height: 600px;
   width: 1000px;
@@ -50,5 +51,10 @@ export default {
   background-size: cover;
   background-image: url("/img/tk.png");
   border-radius: 20px;
+}
+.payments_title{
+  color:$page_other_color;
+  font-size:20px;
+  margin:20px 0;
 }
 </style>

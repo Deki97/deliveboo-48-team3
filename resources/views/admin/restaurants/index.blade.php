@@ -2,7 +2,7 @@
 
 @section('content')
    <div class="container">
-       <h1 class="text-center">LISTA RISTORANTI</h1>
+       <h1 class="text-center mb-5">LISTA RISTORANTI</h1>
        {{-- Se il ristorante è presente mostro la card --}}
         <div class="row">
             <div class="col">
