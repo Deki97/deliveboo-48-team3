@@ -53,8 +53,9 @@ export default {
 }
 .ck {
   height: auto;
+  // color: white;
   width: 200px;
-  background: white;
+  background-color: $page_secondary_color;
   border-radius: 20px;
   -webkit-box-shadow: -2px 5px 11px 0px rgba(64, 64, 64, 0.62);
   box-shadow: -2px 5px 11px 0px rgba(64, 64, 64, 0.62);
@@ -70,7 +71,8 @@ export default {
     width: 45px;
     font-size: 20px;
     border-radius: 50%;
-    background-color: #ff5858;
+    background-color: $page_other_color;
+    border: 2px solid $page_secondary_color;
     color: white;
     display: flex;
     justify-content: center;
