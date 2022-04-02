@@ -17,7 +17,7 @@ return [
         'slug' => ''
     ],
     [
-        'name' => 'Brasiliana',
+        'name' => 'Brasiliano',
         'slug' => ''
     ],
     [
@@ -30,6 +30,10 @@ return [
     ],
     [
         'name' => 'Pesce',
+        'slug' => ''
+    ],
+    [
+        'name' => 'Fusion',
         'slug' => ''
     ],
     

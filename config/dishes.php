@@ -217,6 +217,15 @@ return [
         'slug' => ''
     ],
     [
+        'name' => 'Cacio e pepe',
+        'description' => 'spaghetti con formaggio e pepe',
+        'path_img' => 'https://blog.giallozafferano.it/ricettedivale/wp-content/uploads/2018/10/IMG_20181008_142854_180.jpg',
+        'price' => 11.99,
+        'visible' => false,
+        'restaurant_id' => 8,
+        'slug' => ''
+    ],
+    [
         'name' => 'Dolmades',
         'description' => 'Involtini di carne in foglie di vite',
         'path_img' => 'https://static.cookist.it/wp-content/uploads/sites/21/2017/06/istock-920393181-638x425.jpg',
