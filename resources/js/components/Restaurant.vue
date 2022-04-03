@@ -26,7 +26,12 @@
                         <!-- RESTAURANT CARD -->
                         <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
                             <div class="card-body text-center p-0">
-                                <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                <div v-if="restaurant.path_img.includes('http')">
+                                    <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                </div>
+                                <div v-else>
+                                    <img :src="`http://127.0.0.1:8000/storage/` + restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                </div>  
                                 <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
                                 <div class="decoration"></div>
                                 <a class="btn restaurant_btn" :href="`http://127.0.0.1:8000/restaurants/${restaurant.slug}`"> Vai al ristorante</a>
@@ -40,7 +45,12 @@
                         <!-- RESTAURANT CARD -->
                         <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
                             <div class="card-body text-center p-0">
-                                <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                <div v-if="restaurant.path_img.includes('http')">
+                                    <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                </div>
+                                <div v-else>
+                                    <img :src="`http://127.0.0.1:8000/storage/` + restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                </div> 
                                 <h5 class="card-title my-3">{{ restaurant.restaurant_name }}</h5>
                                 <div class="decoration"></div>
                                 <a class="btn restaurant_btn" :href="`http://127.0.0.1:8000/restaurants/${restaurant.slug}`"> Vai al ristorante</a>
@@ -55,7 +65,12 @@
                         <!-- SINGLE RESTAURANT CARD -->
                         <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
                             <div class="card-body text-center p-0">
-                                <img :src="restaur.path_img" class="card-img-top" :alt="restaur.restaurant_name">
+                                <div v-if="restaurant.path_img.includes('http')">
+                                    <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                </div>
+                                <div v-else>
+                                    <img :src="`http://127.0.0.1:8000/storage/` + restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                </div> 
                                 <h5 class="card-title my-3">{{ restaur.restaurant_name }}</h5>
                                 <div class="decoration"></div>
                                 <a class="btn restaurant_btn" :href="`http://127.0.0.1:8000/restaurants/${restaur.slug}`"> Vai al ristorante</a>

@@ -13,7 +13,7 @@
                 <div class="text-center cart-modal-container">
                   <div class="col-6 col-md-3 d-flex flex-column align-items-center">
                     <div class="text-center cart-modal-container">
-                      <div class="mw-100">
+                      <div  v-if="shoppingCart.length > 0" class="mw-100">
                         <ModalCart :shoppingCart="shoppingCart" :totalPrice="totalPrice" />
                         <div class="d-flex justify-content-between">
                           <a class="btn btn-success mt-3 mr-4" @click="showCheckoutComp">

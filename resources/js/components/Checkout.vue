@@ -15,7 +15,6 @@
             <label for="name"></label>
             <input
               type="text"
-              class="form-control"
               placeholder="Nome..."
               id="name"
               v-model="name"
@@ -25,7 +24,6 @@
             <label for="Surname"></label>
             <input
               type="text"
-              class="form-control"
               placeholder="Cognome..."
               id="Surname"
               v-model="lastname"
@@ -35,25 +33,21 @@
             <label for="Address"></label>
             <input
               type="text"
-              class="form-control"
               placeholder="Indirizzo..."
               id="Address"
               v-model="address"
             />
           </div>
           <div class="mb-1">
-            <label for="customer_email" class="form-label"></label>
+            <label for="email" class="form-label"></label>
             <input
               type="email"
-              class="form-control"
               id="email"
               aria-describedby="emailHelp"
               placeholder="Email.."
               v-model="email"
             />
-            <div id="emailHelp" class="form-text orange_text">
-              We'll never share your email with anyone else.
-            </div>
+
           </div>
           <div class="d-flex justify-content-between mt-4">
             <button class="btn btn-primary" type="submit" @click="createOrder">
@@ -225,4 +219,34 @@ export default {
 .payment{
   margin-bottom: 40px;
 }
+input{
+  background: transparent;
+  border: none;
+  color: $page_other_color;
+  border-bottom: 1px solid $page_other_color;
+  width: 100%;
+  padding-bottom: 10px;
+  outline:0;
+}
+input::placeholder{
+  color: $page_other_color;
+  
+}
+// .braintree-sheet {
+//     background-color: $page_other_color;
+//     border: 1px solid $page_secondary_color;
+// }
+// .braintree-sheet__header .braintree-sheet__text {
+//     color: $page_secondary_color;
+// }
+// .braintree-sheet__content--form .braintree-form__field-group .braintree-form__label {
+//     color: $page_secondary_color;
+// }
+
+// .braintree-sheet__content--form::placeholder .braintree-form__field-group::placeholder .braintree-form__label::placeholder {
+//   color: $page_secondary_color;
+// }
+// .braintree-sheet__header {
+//     border-bottom: 1px solid $page_secondary_color;
+// }
 </style>
