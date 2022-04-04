@@ -65,11 +65,11 @@
                         <!-- SINGLE RESTAURANT CARD -->
                         <div class="card restaurant_cards mx-3 my-3" style="width: 18rem;" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
                             <div class="card-body text-center p-0">
-                                <div v-if="restaurant.path_img.includes('http')">
-                                    <img :src="restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                <div v-if="restaur.path_img.includes('http')">
+                                    <img :src="restaur.path_img" class="card-img-top" :alt="restaur.restaurant_name">
                                 </div>
                                 <div v-else>
-                                    <img :src="`http://127.0.0.1:8000/storage/` + restaurant.path_img" class="card-img-top" :alt="restaurant.restaurant_name">
+                                    <img :src="`http://127.0.0.1:8000/storage/` + restaur.path_img" class="card-img-top" :alt="restaur.restaurant_name">
                                 </div> 
                                 <h5 class="card-title my-3">{{ restaur.restaurant_name }}</h5>
                                 <div class="decoration"></div>
@@ -127,12 +127,12 @@ export default {
                 
         },
         
-        restaurantFilter(restaurant) {
+        restaurantFilter() {
 
 // <div v-for="restaurant in restaurants" :key="restaurant.id" >
 //                         <div v-for="category in restaurant.category" :key="category.id">
 //                             <div v-if="checkbox.includes(category.name) ">
-
+            this.filter = [];
             this.restaurants.forEach(restaurant => {
                 restaurant.category.forEach(categ => {
                     if(this.checkbox.includes(categ.name) && !this.filter.includes(restaurant)) {

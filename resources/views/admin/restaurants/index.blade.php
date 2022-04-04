@@ -2,7 +2,8 @@
 
 @section('content')
    <div class="container">
-       <h1 class="text-center mb-5">LISTA RISTORANTI</h1>
+        <h1 class="text-center">Ciao <span class="text-danger">{{ $user->name  }} {{ $user->lastname  }}</span></h1>
+       <h2 class="text-center mb-5">IL TUO RISTORANTE</h2>
        {{-- Se il ristorante è presente mostro la card --}}
         <div class="row">
             <div class="col">
@@ -32,7 +33,7 @@
                     </div>
                 @else
                     {{-- altrimenti mostriamo un bottone per aggiungere un ristorante --}}
-                    <a class="btn btn-primary text-center" href="{{route('admin.restaurants.create')}}">Aggiungi</a>
+                    <a class="btn btn-primary text-center" href="{{route('admin.restaurants.create')}}">Aggiungi un ristorante</a>
                 @endif  
             </div>
         </div>      

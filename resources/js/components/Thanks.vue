@@ -3,6 +3,7 @@
     <div class=" container" >
       <div class="border-payment d-flex flex-column justify-content-center align-items-center ">
           <div class="payments_title">Pagamento avvenuto con successo.</div>
+          <div class="payment_subtitle">Il tuo ordine arriverà entro : <span class="green">45</span> minuti</div>
           <div>
             <a class="btn-margin btn d-block btn-primary mt-1" href="http://127.0.0.1:8000/">Torna alla home</a>
           </div>
@@ -65,5 +66,12 @@ img{
   width: 80px;
   position: absolute;
   top: 7px;
+}
+.green{
+  color: lightgreen;
+}
+.payment_subtitle{
+  color: $page_other_color;
+  font-size:20px;
 }
 </style>

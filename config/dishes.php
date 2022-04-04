@@ -42,7 +42,7 @@ return [
         'path_img' => 'https://images.pexels.com/photos/4162496/pexels-photo-4162496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
         'price' => 9.99,
         'visible' => true,
-        'restaurant_id' => 2,
+        'restaurant_id' => 1,
         'slug' => ''
     ],
     [
@@ -51,7 +51,7 @@ return [
         'path_img' => 'https://th.bing.com/th/id/R.8c4faa3dac900a44402c1eef305188ad?rik=qi5fLdzRqoQ%2fDw&pid=ImgRaw&r=0',
         'price' => 7.99,
         'visible' => true,
-        'restaurant_id' => 2,
+        'restaurant_id' => 1,
         'slug' => ''
     ],
     [
